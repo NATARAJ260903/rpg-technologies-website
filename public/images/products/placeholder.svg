@@ -1,0 +1,5 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#eef3ec"/>
+  <rect x="300" y="220" width="200" height="160" rx="12" fill="none" stroke="#123c2a" stroke-width="6"/>
+  <text x="400" y="430" font-family="Arial, sans-serif" font-size="28" fill="#5d6a61" text-anchor="middle">Image to be supplied</text>
+</svg>

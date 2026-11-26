@@ -1,0 +1,9826 @@
+/* ==========================================================================
+   RPG TECHNOLOGIES - UNIFIED DESIGN SYSTEM & STYLESHEET
+   ========================================================================== */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --color-primary: #123c2a;
+  --color-primary-dark: #071b14;
+  --color-secondary: #16834a;
+  --color-accent: #e8b64a;
+  --color-accent-light: #4ade80;
+  --color-bg: #f7f8f4;
+  --color-surface: #ffffff;
+  --color-text: #202923;
+  --color-muted: #5d6a61;
+  --color-border: #dfe5dc;
+  --color-border-subtle: rgba(255, 255, 255, 0.18);
+  --color-focus: #16834a;
+
+  --font-heading: "Manrope", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(18, 60, 42, 0.06);
+  --shadow-md: 0 12px 30px rgba(18, 60, 42, 0.10);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.18);
+
+  --container: 1240px;
+  --section-space: 80px;
+}
+
+/* ---------- Base Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: var(--color-muted);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+/* ---------- Layout Containers & Grids ---------- */
+.container {
+  width: min(var(--container), 100% - 40px);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-space);
+}
+
+.section-alt {
+  background: var(--color-surface);
+}
+
+.section-dark {
+  background: var(--color-primary);
+  color: #f7f8f4;
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3 {
+  color: #ffffff;
+}
+
+.section-dark p {
+  color: rgba(247, 248, 244, 0.85);
+}
+
+.section-header {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.section-header.centered {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ---------- Reusable Buttons ---------- */
+.btn,
+.btn-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 26px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.96rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+.btn-custom:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active,
+.btn-custom:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #22c55e 0%, #16834a 100%);
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+  background: linear-gradient(135deg, #1fb355 0%, #137341 100%);
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: #ffffff !important;
+}
+
+.btn-secondary:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff !important;
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #ffffff;
+}
+
+.btn-outline.on-light {
+  border-color: var(--color-primary);
+  color: var(--color-primary) !important;
+  background: transparent;
+}
+
+.btn-outline.on-light:hover {
+  background: var(--color-primary);
+  color: #ffffff !important;
+}
+
+.btn-whatsapp {
+  background: #16a34a;
+  color: #ffffff !important;
+}
+
+.btn-whatsapp:hover {
+  background: #15803d;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   NAVBAR & HEADER
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
+}
+
+.top-micro-bar {
+  background: var(--color-primary-dark);
+  color: #a7d7c5;
+  font-size: 0.82rem;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.micro-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.micro-left, .micro-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.micro-left a, .micro-right a {
+  color: #ffffff;
+}
+
+.divider-dot {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.badge-micro {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.main-nav {
+  padding: 12px 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.brand-highlight {
+  color: var(--color-secondary);
+}
+
+.brand-motto {
+  font-size: 0.74rem;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 4px;
+  background: #f1f5f2;
+  padding: 5px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.nav-item {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-item:hover {
+  color: var(--color-secondary);
+  background: rgba(22, 131, 74, 0.08);
+}
+
+.nav-item.active {
+  background: var(--color-secondary);
+  color: #ffffff;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-arrow {
+  font-size: 0.7rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  padding: 8px 0;
+  min-width: 210px;
+  border: 1px solid var(--color-border);
+  z-index: 100;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.dropdown-menu li a:hover {
+  background: #f0fdf4;
+  color: var(--color-secondary);
+}
+
+.btn-enquire-now {
+  background: linear-gradient(135deg, #22c55e 0%, #16834a 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+}
+
+.btn-enquire-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.5);
+}
+
+/* ==========================================================================
+   PREMIUM HERO COMPONENT (.hero-premium)
+   ========================================================================== */
+.hero-premium {
+  position: relative;
+  isolation: isolate;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #071b14;
+  background-image: 
+    radial-gradient(circle at 85% 25%, rgba(34, 197, 94, 0.18), transparent 50%),
+    radial-gradient(circle at 10% 85%, rgba(232, 182, 74, 0.12), transparent 45%),
+    linear-gradient(135deg, #071d14 0%, #123c2a 55%, #184e36 100%);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.hero-premium-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 22, 18, 0.94) 0%,
+    rgba(5, 22, 18, 0.82) 42%,
+    rgba(5, 22, 18, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-premium-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  align-items: center;
+  gap: 48px;
+  padding-block: 60px 40px;
+}
+
+.hero-premium-content {
+  max-width: 760px;
+}
+
+.hero-premium-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.09);
+  color: #e6f5ed;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.9);
+  display: inline-block;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.hero-premium-content h1 {
+  color: #ffffff;
+  font-size: clamp(2.5rem, 5.2vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.hero-premium-content h1 span {
+  color: #4ade80;
+  display: inline;
+}
+
+.hero-premium-description {
+  max-width: 580px;
+  margin: 0 0 30px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.hero-premium-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.hero-premium-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-premium-note span {
+  color: #4ade80;
+}
+
+.hero-note-line {
+  width: 32px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+.hero-premium-side {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-side-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 340px);
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-lg);
+  background: rgba(12, 35, 28, 0.65);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.hero-side-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(74, 222, 128, 0.4);
+}
+
+.hero-side-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(74, 222, 128, 0.16);
+  color: #4ade80;
+  font-size: 26px;
+}
+
+.hero-side-card strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.hero-side-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.hero-premium-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+/* ==========================================================================
+   TRUST STRIP
+   ========================================================================== */
+
+/* Original Trust Strip styles - retained for other pages */
+.trust-strip-wrapper {
+  position: relative;
+  margin-top: -28px;
+  z-index: 20;
+}
+
+.trust-strip-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 24px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  border: 1px solid var(--color-border);
+}
+
+.trust-col {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.trust-icon-box {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #f0fdf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+
+.trust-sub {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* Current RPG homepage Trust Strip */
+.rpg-home .trust-strip-mockup {
+  position: relative;
+  z-index: 4;
+  background: #ffffff;
+  border-bottom: 1px solid #e8eee7;
+  box-shadow: 0 12px 35px rgba(20, 50, 30, 0.045);
+}
+
+.rpg-home .trust-strip-inner {
+  width: min(1200px, 90%);
+  min-height: 112px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+}
+
+.rpg-home .trust-mockup-item {
+  min-width: 0;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 12px 18px;
+  border-right: 1px solid #e7ede5;
+  transition: background 0.25s ease;
+}
+
+.rpg-home .trust-mockup-item:last-child {
+  border-right: none;
+}
+
+.rpg-home .trust-mockup-item:hover {
+  background: #f6f9f4;
+}
+
+.rpg-home .trust-mockup-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #527b50;
+  background: #edf4e9;
+  transition: transform 0.25s ease;
+}
+
+.rpg-home .trust-mockup-item:hover .trust-mockup-icon {
+  transform: translateY(-3px);
+}
+
+.rpg-home .trust-mockup-text h4 {
+  margin: 0 0 5px;
+  color: #183d29;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.rpg-home .trust-mockup-text p {
+  margin: 0;
+  color: #77847a;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Trust Strip tablet layout */
+@media (max-width: 900px) {
+  .rpg-home .trust-strip-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 15px 0;
+  }
+
+  .rpg-home .trust-mockup-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .rpg-home .trust-mockup-item:nth-child(-n+2) {
+    border-bottom: 1px solid #e7ede5;
+  }
+}
+
+/* Trust Strip mobile layout */
+@media (max-width: 600px) {
+  .rpg-home .trust-strip-inner {
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rpg-home .trust-mockup-item {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 15px 8px;
+  }
+
+  .rpg-home .trust-mockup-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .rpg-home .trust-mockup-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .rpg-home .trust-mockup-text h4 {
+    font-size: 12px;
+  }
+
+  .rpg-home .trust-mockup-text p {
+    font-size: 10px;
+  }
+}
+
+
+/* ==========================================================================
+   SECTION HEADERS & SHOP/SERVICE CARDS
+   ========================================================================== */
+.section-header-centered {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 44px;
+}
+
+.section-pill-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-secondary);
+  background: #e8f5e9;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 10px;
+}
+
+.section-main-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.heading-underline-green {
+  width: 50px;
+  height: 4px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+/* Services 4-Grid */
+.services-four-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.service-vcard {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.service-vcard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-vcard-thumb {
+  position: relative;
+  height: 120px;
+}
+
+.thumb-placeholder-gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1b4d36 0%, #123c2a 100%);
+  display: flex;
+  align-items: flex-start;
+  padding: 12px;
+}
+
+.thumb-category-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.floating-service-icon {
+  position: absolute;
+  bottom: -18px;
+  left: 18px;
+  width: 40px;
+  height: 40px;
+  background: #22c55e;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  border: 3px solid #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.service-vcard-body {
+  padding: 26px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.service-vcard-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-primary);
+}
+
+.service-vcard-desc {
+  font-size: 0.86rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.service-vcard-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.service-vcard-link:hover {
+  gap: 8px;
+}
+
+/* Shop Products Grid */
+.shop-filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.shop-filter-btn {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shop-filter-btn.active,
+.shop-filter-btn:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.shop-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-bottom: 48px;
+}
+
+.shop-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.shop-card-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px 0;
+}
+
+.shop-card-category {
+  font-size: 0.74rem;
+  font-weight: 700;
+  background: #e8f5e9;
+  color: var(--color-secondary);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.shop-card-rating {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #d97706;
+}
+
+.shop-card-image-box {
+  padding: 16px;
+}
+
+.shop-card-placeholder-art {
+  height: 120px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px dashed #86efac;
+}
+
+.shop-art-icon {
+  font-size: 2rem;
+}
+
+.shop-art-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.shop-card-body {
+  padding: 0 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.shop-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.shop-card-desc {
+  font-size: 0.84rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+  margin-bottom: 14px;
+}
+
+.shop-card-specs {
+  background: #f8faf9;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+}
+
+.spec-label, .spec-name {
+  color: var(--color-muted);
+}
+
+.spec-val {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.shop-card-actions {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.shop-btn-whatsapp {
+  background: #16a34a;
+  color: #ffffff !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: var(--radius-pill);
+  text-align: center;
+}
+
+.shop-btn-details {
+  background: #f1f5f2;
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: var(--radius-pill);
+  text-align: center;
+  border: 1px solid var(--color-border);
+}
+
+.shop-bottom-banner {
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: #ffffff;
+}
+
+.shop-banner-left h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.shop-banner-left p {
+  color: #c2d7ce;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SOLAR SOLUTIONS & CALCULATOR STYLES
+   ========================================================================== */
+.calculator-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+  margin-top: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.input-with-unit {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.unit-prefix {
+  position: absolute;
+  left: 14px;
+  font-weight: 700;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.calc-input {
+  width: 100%;
+  padding: 12px 14px 12px 32px;
+  font-size: 1.05rem;
+  font-family: var(--font-body);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.2s ease;
+}
+
+select.calc-input {
+  padding-left: 14px;
+  cursor: pointer;
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  background: #ffffff;
+}
+
+.field-hint {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin-top: 6px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.result-metric {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-metric.highlighted {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(22, 131, 74, 0.08) 0%, rgba(232, 182, 74, 0.08) 100%);
+  border-color: var(--color-secondary);
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  margin: 6px 0 2px;
+}
+
+.metric-unit {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.metric-sub {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.calc-assumptions {
+  background: #fdfdfb;
+  border-left: 3px solid var(--color-accent);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 20px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   EV CHARGING & SELECTOR STYLES
+   ========================================================================== */
+.selector-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+  margin-top: 24px;
+}
+
+.selector-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.control-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.radio-pill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.pill-btn:hover {
+  border-color: var(--color-secondary);
+}
+
+.pill-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(18, 60, 42, 0.15);
+}
+
+.selector-result-card {
+  background: linear-gradient(135deg, rgba(22, 131, 74, 0.05) 0%, rgba(232, 182, 74, 0.08) 100%);
+  border: 1.5px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: var(--color-secondary);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.result-specs {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.comparison-table th {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 16px 20px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.comparison-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.comparison-table tr:nth-child(even) td {
+  background: var(--color-bg);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  margin-top: 0;
+  padding-block: 64px 24px;
+  background: var(--color-primary-dark);
+  color: rgba(247, 248, 244, 0.8);
+}
+
+.site-footer h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.site-footer a {
+  color: rgba(247, 248, 244, 0.85);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-img {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  box-sizing: border-box;
+  padding: 7px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.footer-brand-name {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.footer-bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-premium-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-premium-side {
+    justify-content: flex-start;
+  }
+
+  .trust-strip-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-four-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .shop-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-space: 56px;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-toggle {
+    display: block;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .mobile-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin: 4px 0;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+  }
+
+  .hero-premium-content h1 {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    letter-spacing: -1px;
+  }
+
+  .hero-premium-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-premium-actions .btn,
+  .hero-premium-actions .btn-custom {
+    width: 100%;
+  }
+
+  .hero-premium-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .trust-strip-wrapper {
+    margin-top: 16px;
+  }
+
+  .trust-strip-card {
+    grid-template-columns: 1fr;
+  }
+
+  .services-four-grid,
+  .shop-products-grid,
+  .calculator-wrapper,
+  .selector-container,
+  .footer-grid,
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-bottom-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ==========================================================================
+   RPG TECHNOLOGIES ANIMATED CINEMATIC HERO (.rpg-hero)
+   ========================================================================== */
+
+.rpg-hero {
+  --rpg-accent: #8ee6a9;
+  --rpg-accent-gold: #e8b64a;
+  --rpg-white: #f8f8f2;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 82vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--rpg-white);
+  background: #071b13;
+}
+
+.rpg-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-color: #0c2a1d;
+  background-image: 
+    radial-gradient(circle at 85% 20%, rgba(34, 197, 94, 0.22), transparent 50%),
+    radial-gradient(circle at 15% 80%, rgba(232, 182, 74, 0.15), transparent 45%),
+    linear-gradient(135deg, #071b13 0%, #0f3625 50%, #154530 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.rpg-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 19, 14, 0.94) 0%,
+      rgba(4, 19, 14, 0.85) 45%,
+      rgba(4, 19, 14, 0.40) 80%,
+      rgba(4, 19, 14, 0.22) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(4, 19, 14, 0.82) 0%,
+      transparent 40%,
+      rgba(4, 19, 14, 0.3) 100%
+    );
+}
+
+.rpg-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: linear-gradient(
+    90deg,
+    transparent calc(25% - 1px),
+    rgba(255, 255, 255, 0.25) 25%,
+    transparent calc(25% + 1px)
+  );
+}
+
+.rpg-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) 340px;
+  align-items: center;
+  gap: 56px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.rpg-hero-main {
+  max-width: 760px;
+}
+
+.rpg-hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.rpg-kicker-mark {
+  width: 28px;
+  height: 2px;
+  background: var(--rpg-accent);
+}
+
+.rpg-kicker-location {
+  padding-left: 12px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.rpg-hero-main h1 {
+  margin: 0;
+  color: var(--rpg-white);
+  font-size: clamp(2.8rem, 5.8vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  font-weight: 800;
+}
+
+.rpg-hero-main h1 span {
+  color: var(--rpg-accent);
+  font-style: italic;
+  font-weight: 700;
+}
+
+.rpg-hero-description {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 540px;
+  margin-top: 24px;
+}
+
+.rpg-description-rule {
+  flex-shrink: 0;
+  width: 3px;
+  height: 48px;
+  background: var(--rpg-accent);
+  border-radius: 2px;
+}
+
+.rpg-hero-description p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.rpg-hero-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.rpg-green-tagline {
+  margin-top: 24px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  color: var(--rpg-accent);
+  opacity: 0.9;
+}
+
+/* Right editorial panel */
+.rpg-hero-aside {
+  align-self: center;
+  width: 100%;
+  padding: 24px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-lg);
+  background: rgba(8, 32, 22, 0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+}
+
+.rpg-aside-index {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.rpg-focus-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.rpg-focus-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(142, 230, 169, 0.15);
+  color: var(--rpg-accent);
+}
+
+.rpg-focus-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rpg-focus-copy span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.65rem;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+}
+
+.rpg-focus-copy strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.rpg-aside-caption {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+/* Bottom signature */
+.rpg-hero-bottom {
+  position: relative;
+  z-index: 2;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 20px;
+  max-width: var(--container);
+  margin: 0 auto;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.rpg-bottom-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rpg-bottom-brand span:first-child {
+  color: var(--rpg-accent);
+}
+
+.rpg-bottom-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.rpg-bottom-center span:not(:nth-child(2)) {
+  width: 24px;
+  height: 1px;
+  background: var(--rpg-accent);
+}
+
+.rpg-bottom-tag {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 950px) {
+  .rpg-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .rpg-hero-aside {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 680px) {
+  .rpg-hero-inner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .rpg-hero-kicker {
+    flex-wrap: wrap;
+    font-size: 0.68rem;
+  }
+  .rpg-hero-main h1 {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+  }
+  .rpg-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rpg-hero-buttons .btn,
+  .rpg-hero-buttons .btn-custom {
+    width: 100%;
+  }
+  .rpg-bottom-center {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   RPG TECHNOLOGIES ANIMATED CINEMATIC HERO
+   ========================================================================== */
+
+.rpg-hero {
+  --rpg-accent: #8ee6a9;
+  --rpg-white: #f8f8f2;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 82vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--rpg-white);
+  background: #071b13;
+}
+
+.rpg-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-color: #0c2a1d;
+  background-image:
+    linear-gradient(rgba(4, 19, 14, 0.25), rgba(4, 19, 14, 0.25)),
+    url("/images/hero/solar-hero.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.rpg-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 19, 14, 0.94) 0%,
+      rgba(4, 19, 14, 0.85) 45%,
+      rgba(4, 19, 14, 0.40) 80%,
+      rgba(4, 19, 14, 0.22) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(4, 19, 14, 0.82) 0%,
+      transparent 40%,
+      rgba(4, 19, 14, 0.3) 100%
+    );
+}
+
+.rpg-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: linear-gradient(
+    90deg,
+    transparent calc(25% - 1px),
+    rgba(255, 255, 255, 0.25) 25%,
+    transparent calc(25% + 1px)
+  );
+}
+
+.rpg-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) 340px;
+  align-items: center;
+  gap: 56px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.rpg-hero-main {
+  max-width: 760px;
+}
+
+.rpg-hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.rpg-kicker-mark {
+  width: 28px;
+  height: 2px;
+  background: var(--rpg-accent);
+}
+
+.rpg-kicker-location {
+  padding-left: 12px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.rpg-hero-main h1 {
+  margin: 0;
+  color: var(--rpg-white);
+  font-size: clamp(2.8rem, 5.8vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  font-weight: 800;
+}
+
+.rpg-hero-main h1 span {
+  color: var(--rpg-accent);
+  font-style: italic;
+  font-weight: 700;
+}
+
+.rpg-hero-description {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 540px;
+  margin-top: 24px;
+}
+
+.rpg-description-rule {
+  flex-shrink: 0;
+  width: 3px;
+  height: 48px;
+  background: var(--rpg-accent);
+  border-radius: 2px;
+}
+
+.rpg-hero-description p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.rpg-hero-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.rpg-green-tagline {
+  margin-top: 24px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  color: var(--rpg-accent);
+  opacity: 0.9;
+}
+
+/* Right information panel */
+.rpg-hero-aside {
+  align-self: center;
+  width: 100%;
+  padding: 24px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-lg, 18px);
+  background: rgba(8, 32, 22, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+}
+
+.rpg-aside-index {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.rpg-focus-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.rpg-focus-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(142, 230, 169, 0.15);
+  color: var(--rpg-accent);
+}
+
+.rpg-focus-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rpg-focus-copy span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.65rem;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+}
+
+.rpg-focus-copy strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.rpg-aside-caption {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+/* Bottom brand signature */
+.rpg-hero-bottom {
+  position: relative;
+  z-index: 2;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 20px;
+  max-width: var(--container, 1200px);
+  margin: 0 auto;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.rpg-bottom-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rpg-bottom-brand span:first-child {
+  color: var(--rpg-accent);
+}
+
+.rpg-bottom-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.rpg-bottom-center span:not(:nth-child(2)) {
+  width: 24px;
+  height: 1px;
+  background: var(--rpg-accent);
+}
+
+.rpg-bottom-tag {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+/* Tablet */
+@media (max-width: 950px) {
+  .rpg-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .rpg-hero-aside {
+    max-width: 480px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .rpg-hero {
+    min-height: auto;
+  }
+
+  .rpg-hero-inner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 32px;
+  }
+
+  .rpg-hero-kicker {
+    flex-wrap: wrap;
+    font-size: 0.68rem;
+  }
+
+  .rpg-hero-main h1 {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+  }
+
+  .rpg-hero-description p {
+    font-size: 0.95rem;
+  }
+
+  .rpg-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rpg-hero-buttons .btn,
+  .rpg-hero-buttons .btn-custom {
+    width: 100%;
+  }
+
+  .rpg-green-tagline {
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+  }
+
+  .rpg-hero-bottom {
+    flex-wrap: wrap;
+  }
+
+  .rpg-bottom-center {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   RPG TECHNOLOGIES - PREMIUM NAVIGATION HEADER
+   ========================================================================== */
+
+.rpg-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid rgba(18, 60, 42, 0.09);
+  box-shadow: 0 5px 24px rgba(7, 27, 20, 0.045);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.rpg-navbar-inner {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* Brand */
+.rpg-brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* White tile keeps the blue "RPG" readable on the dark / photo navbar */
+.rpg-brand-logo-wrap {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 7px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(7, 27, 20, 0.22);
+}
+
+.rpg-brand-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.rpg-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rpg-brand-name {
+  color: #123c2a;
+  font-size: 1.12rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.rpg-brand-tagline {
+  color: #718276;
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 1.55px;
+}
+
+/* Desktop navigation */
+.rpg-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.rpg-nav-items {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.rpg-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  color: #48564d;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.rpg-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 0;
+  height: 2px;
+  border-radius: 5px;
+  background: #16834a;
+  transition: width 0.25s ease;
+}
+
+.rpg-nav-link:hover,
+.rpg-nav-active {
+  color: #16834a;
+}
+
+.rpg-nav-link:hover::after,
+.rpg-nav-active::after {
+  width: 100%;
+}
+
+/* Quote button */
+.rpg-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 19px;
+  border-radius: 7px;
+  background: #123c2a;
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.rpg-nav-cta:hover {
+  background: #16834a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(22, 131, 74, 0.2);
+}
+
+/* Mobile menu button */
+.rpg-menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dce8df;
+  border-radius: 8px;
+  background: #f5f9f5;
+  color: #123c2a;
+  cursor: pointer;
+}
+
+/* Tablet and mobile */
+@media (max-width: 1050px) {
+  .rpg-navbar-inner {
+    min-height: 78px;
+  }
+
+  .rpg-menu-toggle {
+    display: inline-flex;
+  }
+
+  .rpg-nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 20px 24px 24px;
+    background: #ffffff;
+    border-top: 1px solid #edf1ed;
+    border-bottom: 1px solid #e2ebe4;
+    box-shadow: 0 16px 25px rgba(7, 27, 20, 0.09);
+  }
+
+  .rpg-nav-links.rpg-nav-open {
+    display: flex;
+  }
+
+  .rpg-nav-items {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .rpg-nav-link {
+    min-height: 46px;
+    padding: 0 5px;
+    border-bottom: 1px solid #f0f3f0;
+  }
+
+  .rpg-nav-link::after {
+    display: none;
+  }
+
+  .rpg-nav-cta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .rpg-navbar-inner {
+    min-height: 72px;
+  }
+
+  .rpg-brand-logo-wrap {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .rpg-brand-name {
+    font-size: 1rem;
+  }
+
+  .rpg-brand-tagline {
+    font-size: 0.51rem;
+    letter-spacing: 1px;
+  }
+
+  .rpg-nav-links {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+/* =========================================
+   RPG ABOUT PAGE - NEW CINEMATIC DESIGN
+========================================= */
+
+.rpg-about-page {
+  background: #f7f9f5;
+  color: #183b2b;
+  overflow: hidden;
+}
+
+/* HERO */
+
+.rpg-about-page .rpg-about-hero {
+  position: relative;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  background: #102d20;
+}
+
+.rpg-about-page .rpg-about-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rpg-about-page .rpg-about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(5, 27, 18, 0.94) 0%, rgba(5, 27, 18, 0.72) 48%, rgba(5, 27, 18, 0.15) 100%),
+    linear-gradient(0deg, rgba(5, 27, 18, 0.55), transparent 45%);
+}
+
+.rpg-about-hero-content {
+  width: min(1180px, 90%);
+  margin: 0 auto;
+  padding: 120px 0 145px;
+  color: white;
+}
+
+.rpg-about-hero-content > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.rpg-about-hero-content h1 {
+  max-width: 850px;
+  margin: 28px 0 22px;
+  color: #fff;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.04;
+  letter-spacing: -3px;
+}
+
+.rpg-about-hero-content h1 strong {
+  color: #c5e8a5;
+  font-weight: 700;
+}
+
+.rpg-about-hero-content p {
+  max-width: 550px;
+  color: #e2eee5;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.rpg-about-hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  padding: 16px 23px;
+  border-radius: 5px;
+  background: #c5e8a5;
+  color: #123c2a;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.rpg-about-hero-button:hover {
+  background: #fff;
+  transform: translateY(-4px);
+}
+
+.rpg-about-hero-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5%;
+  border-top: 1px solid rgba(255,255,255,0.22);
+  color: #e0eee2;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* COMPANY INTRODUCTION */
+
+.rpg-about-overview {
+  width: 90%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 115px 0;
+}
+
+.rpg-about-overview-label,
+.rpg-about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #16834a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.rpg-about-overview-label > span {
+  width: 30px;
+  height: 2px;
+  background: #16834a;
+}
+
+.rpg-about-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 85px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.rpg-about-overview-heading h2 {
+  margin: 0;
+  color: #123c2a;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.rpg-about-overview-heading h2 span {
+  color: #16834a;
+}
+
+.rpg-about-overview-content > p {
+  margin: 0 0 28px;
+  color: #68766c;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.rpg-about-check-list {
+  display: grid;
+  gap: 17px;
+}
+
+.rpg-about-check-list > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #244b35;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rpg-about-check-list svg {
+  flex-shrink: 0;
+  color: #16834a;
+}
+
+/* SOLUTION CARDS */
+
+.rpg-about-solutions {
+  padding: 105px max(5%, calc((100% - 1180px) / 2));
+  background: #edf3eb;
+}
+
+.rpg-about-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.rpg-about-section-heading h2 {
+  margin: 18px 0 0;
+  color: #123c2a;
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.rpg-about-section-heading h2 span {
+  color: #16834a;
+}
+
+.rpg-about-section-heading > p {
+  max-width: 350px;
+  margin: 0 0 7px;
+  color: #68766c;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.rpg-about-solution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.rpg-about-solution-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 35px rgba(22, 55, 35, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.rpg-about-solution-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(22, 55, 35, 0.12);
+}
+
+.rpg-about-solution-image {
+  position: relative;
+  display: block;
+  height: 255px;
+  overflow: hidden;
+  background: #dce8dc;
+}
+
+.rpg-about-solution-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.rpg-about-solution-card:hover .rpg-about-solution-image img {
+  transform: scale(1.07);
+}
+
+.rpg-about-solution-number {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: rgba(10, 42, 27, 0.85);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.rpg-about-solution-arrow {
+  position: absolute;
+  right: 17px;
+  bottom: 17px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #c5e8a5;
+  color: #123c2a;
+}
+
+.rpg-about-solution-content {
+  position: relative;
+  padding: 27px 25px 30px;
+}
+
+.rpg-about-solution-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-top: -51px;
+  margin-bottom: 20px;
+  position: relative;
+  border: 4px solid white;
+  border-radius: 50%;
+  background: #16834a;
+  color: white;
+  box-sizing: content-box;
+}
+
+.rpg-about-solution-content h3 {
+  margin: 0 0 12px;
+  color: #123c2a;
+  font-size: 23px;
+}
+
+.rpg-about-solution-content p {
+  min-height: 75px;
+  margin: 0 0 20px;
+  color: #718075;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.rpg-about-solution-content > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #16834a;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* GREEN CALL TO ACTION */
+
+.rpg-about-green {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 5%;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(105, 167, 95, 0.22), transparent 35%),
+    linear-gradient(120deg, #0b291c, #164d32);
+  color: #fff;
+}
+
+.rpg-about-green-decoration {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-18deg);
+  color: rgba(255,255,255,0.055);
+}
+
+.rpg-about-green-content {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.rpg-about-green-content > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rpg-about-green-content h2 {
+  margin: 25px 0;
+  color: #fff;
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+}
+
+.rpg-about-green-content h2 strong {
+  color: #c5e8a5;
+}
+
+.rpg-about-green-content > p {
+  max-width: 540px;
+  margin-bottom: 30px;
+  color: #d8e8dc;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.rpg-about-green-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 23px;
+  border-radius: 5px;
+  background: #c5e8a5;
+  color: #123c2a;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.rpg-about-green-button:hover {
+  background: #fff;
+  transform: translateY(-3px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .rpg-about-overview,
+  .rpg-about-solutions {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .rpg-about-overview-grid {
+    gap: 45px;
+  }
+
+  .rpg-about-solution-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .rpg-about-page .rpg-about-hero {
+    min-height: 600px;
+  }
+
+  .rpg-about-hero-content {
+    width: 88%;
+    padding: 90px 0 120px;
+  }
+
+  .rpg-about-hero-content h1 {
+    font-size: clamp(43px, 11vw, 60px);
+    letter-spacing: -2px;
+  }
+
+  .rpg-about-hero-content p {
+    font-size: 15px;
+  }
+
+  .rpg-about-hero-bottom {
+    padding: 16px 6%;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .rpg-about-overview {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  .rpg-about-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .rpg-about-overview-heading h2,
+  .rpg-about-section-heading h2 {
+    font-size: 42px;
+  }
+
+  .rpg-about-solutions {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  .rpg-about-section-heading {
+    display: block;
+  }
+
+  .rpg-about-section-heading > p {
+    margin-top: 20px;
+  }
+
+  .rpg-about-solution-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .rpg-about-solution-image {
+    height: 240px;
+  }
+
+  .rpg-about-solution-content p {
+    min-height: auto;
+  }
+
+  .rpg-about-green {
+    padding: 80px 7%;
+  }
+
+  .rpg-about-green-content h2 {
+    font-size: 52px;
+    letter-spacing: -2px;
+  }
+
+  .rpg-about-green-decoration {
+    right: -60px;
+    opacity: 0.6;
+  }
+}
+
+/* =========================================
+   RPG HOMEPAGE - CINEMATIC HERO UPGRADE
+========================================= */
+
+.rpg-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 760px;
+  min-height: min(850px, calc(100svh - 88px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: #071b13;
+  color: #fff;
+}
+
+.rpg-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    url("/images/hero/solar-hero.png")
+    center 55% / cover no-repeat;
+  transform: scale(1.025);
+  animation: rpgHeroZoom 18s ease-in-out infinite alternate;
+}
+
+.rpg-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 20, 13, 0.94) 0%,
+      rgba(4, 20, 13, 0.82) 42%,
+      rgba(4, 20, 13, 0.40) 75%,
+      rgba(4, 20, 13, 0.25) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(4, 20, 13, 0.75),
+      transparent 45%
+    );
+}
+
+.rpg-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.12;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 49.9%,
+      rgba(255,255,255,0.25) 50%,
+      transparent 50.1%
+    );
+}
+
+.rpg-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 390px;
+  align-items: center;
+  gap: 65px;
+  padding-top: 90px;
+  padding-bottom: 100px;
+}
+
+.rpg-hero-main {
+  max-width: 760px;
+}
+
+.rpg-hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #c5e8a5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.rpg-kicker-mark {
+  width: 34px;
+  height: 2px;
+  background: #c5e8a5;
+}
+
+.rpg-hero-location {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 25px;
+  color: rgba(255,255,255,0.68);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.rpg-location-dot,
+.rpg-bottom-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9be2a8;
+  box-shadow: 0 0 14px rgba(155,226,168,0.7);
+}
+
+.rpg-hero-main h1 {
+  margin: 25px 0 26px;
+  color: #fff;
+  font-size: clamp(55px, 7.1vw, 91px);
+  line-height: 0.99;
+  letter-spacing: -4px;
+  font-weight: 800;
+}
+
+.rpg-hero-main h1 span {
+  color: #c5e8a5;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.rpg-hero-description {
+  display: flex;
+  gap: 17px;
+  max-width: 540px;
+  margin-top: 27px;
+}
+
+.rpg-description-rule {
+  width: 3px;
+  min-height: 70px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #9bd99e;
+}
+
+.rpg-hero-description p {
+  margin: 0;
+  color: rgba(255,255,255,0.83);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.rpg-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.rpg-green-tagline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+  color: #c5e8a5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+/* Information panel */
+
+.rpg-hero-aside {
+  width: 100%;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 16px;
+  background: rgba(8,31,20,0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.22);
+}
+
+.rpg-aside-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  color: #c5e8a5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rpg-aside-top span:last-child {
+  color: rgba(255,255,255,0.45);
+}
+
+.rpg-focus-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 23px 0;
+  border-top: 1px solid rgba(255,255,255,0.14);
+}
+
+.rpg-focus-icon {
+  width: 49px;
+  height: 49px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: rgba(197,232,165,0.13);
+  color: #c5e8a5;
+}
+
+.rpg-focus-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.rpg-focus-copy span {
+  display: block;
+  margin-bottom: 7px;
+  color: #a9d59e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.rpg-focus-copy strong {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.rpg-focus-copy p {
+  margin: 5px 0 0;
+  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.rpg-focus-item > svg {
+  flex-shrink: 0;
+  color: #c5e8a5;
+}
+
+.rpg-aside-caption {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.65);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Bottom strip */
+
+.rpg-hero-bottom {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 64px;
+  padding: 15px max(5%, calc((100% - 1200px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.17);
+  background: rgba(5,22,14,0.2);
+}
+
+.rpg-bottom-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.rpg-bottom-center {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: rgba(255,255,255,0.66);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.rpg-bottom-center span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #c5e8a5;
+}
+
+.rpg-scroll-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+}
+
+.rpg-scroll-link:hover {
+  color: #fff;
+}
+
+@keyframes rpgHeroZoom {
+  from { transform: scale(1.025); }
+  to { transform: scale(1.09); }
+}
+
+/* Tablet */
+
+@media (max-width: 950px) {
+  .rpg-hero {
+    min-height: auto;
+  }
+
+  .rpg-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding-top: 85px;
+    padding-bottom: 115px;
+  }
+
+  .rpg-hero-aside {
+    max-width: 540px;
+  }
+
+  .rpg-hero-main h1 {
+    font-size: clamp(58px, 9vw, 82px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .rpg-hero-inner {
+    width: 88%;
+    padding-top: 65px;
+    padding-bottom: 120px;
+    gap: 35px;
+  }
+
+  .rpg-hero-kicker {
+    font-size: 9px;
+    letter-spacing: 1.8px;
+  }
+
+  .rpg-hero-main h1 {
+    font-size: clamp(47px, 12vw, 66px);
+    letter-spacing: -2.5px;
+  }
+
+  .rpg-hero-description p {
+    font-size: 14px;
+  }
+
+  .rpg-hero-buttons {
+    flex-direction: column;
+  }
+
+  .rpg-hero-buttons .btn,
+  .rpg-hero-buttons .btn-custom {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rpg-green-tagline {
+    font-size: 8px;
+    letter-spacing: 1px;
+    line-height: 1.7;
+  }
+
+  .rpg-hero-aside {
+    padding: 21px;
+  }
+
+  .rpg-hero-bottom {
+    padding: 15px 6%;
+  }
+
+  .rpg-bottom-center {
+    display: none;
+  }
+
+  .rpg-scroll-link {
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rpg-hero-photo {
+    animation: none;
+  }
+}
+
+/* =========================================
+   RPG TRANSPARENT NAVBAR
+========================================= */
+
+.rpg-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent !important;
+  border-bottom: 1px solid transparent;
+  box-shadow: none !important;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+.rpg-navbar .rpg-navbar-inner {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rpg-navbar .rpg-brand-name,
+.rpg-navbar .rpg-brand-tagline,
+.rpg-navbar .rpg-nav-link {
+  color: #ffffff !important;
+}
+
+.rpg-navbar .rpg-nav-link {
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.rpg-navbar .rpg-nav-link:hover,
+.rpg-navbar .rpg-nav-active {
+  color: #c5e8a5 !important;
+}
+
+.rpg-navbar .rpg-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 19px;
+  border-radius: 6px;
+  background: #c5e8a5;
+  color: #153a26;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.rpg-navbar .rpg-nav-cta:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.rpg-navbar .rpg-menu-toggle {
+  color: #ffffff;
+}
+
+/* Background appears after scrolling */
+
+.rpg-navbar-scrolled {
+  background: rgba(7, 29, 19, 0.92) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.rpg-navbar-scrolled .rpg-navbar-inner {
+  min-height: 76px;
+}
+
+/* Mobile navigation */
+
+@media (max-width: 900px) {
+  .rpg-navbar .rpg-nav-links {
+    background: rgba(7, 29, 19, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .rpg-navbar .rpg-nav-link {
+    color: #ffffff !important;
+  }
+
+  .rpg-navbar .rpg-menu-toggle {
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+  }
+}
+.rpg-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+.rpg-navbar-visible {
+  transform: translateY(0);
+}
+
+.rpg-navbar-hidden {
+  transform: translateY(-110%);
+  pointer-events: none;
+}
+
+.rpg-navbar-top {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.rpg-navbar-scrolled.rpg-navbar-visible {
+  background: rgba(7, 29, 19, 0.94) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+/* HERO BACKGROUND IMAGE */
+.rpg-hero-photo {
+  background-image: url("/images/hero/hero-main.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* =========================================
+   RPG TECHNOLOGIES - HOMEPAGE DESIGN
+   Cinematic Premium + Editorial Layout
+========================================= */
+
+.rpg-home {
+  --home-green: #153c29;
+  --home-deep: #092619;
+  --home-light: #eaf2e8;
+  --home-lime: #c5e8a5;
+  --home-text: #20352a;
+  --home-muted: #68766d;
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--home-text);
+}
+
+.rpg-home .container {
+  width: min(1200px, 90%);
+  margin-inline: auto;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.rpg-home .rpg-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 760px;
+  min-height: min(850px, 100svh);
+  overflow: hidden;
+  background: var(--home-deep);
+}
+
+.rpg-home .rpg-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-image: url("/images/hero/hero-main.jpg");
+  background-position: center;
+  background-size: cover;
+  animation: rpg-home-hero-zoom 20s ease-in-out infinite alternate;
+}
+
+.rpg-home .rpg-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 25, 16, 0.94) 0%,
+      rgba(5, 25, 16, 0.78) 43%,
+      rgba(5, 25, 16, 0.28) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5, 25, 16, 0.55),
+      transparent 45%
+    );
+}
+
+.rpg-home .rpg-hero-inner {
+  position: relative;
+  z-index: 2;
+
+  /* Override the old two-column hero layout */
+  display: block;
+
+  width: min(1200px, 90%);
+  margin: 0 auto;
+
+  padding-top: 130px;
+  padding-bottom: 125px;
+}
+
+.rpg-home .rpg-hero-main {
+  max-width: 780px;
+}
+
+.rpg-home .rpg-hero-kicker,
+.rpg-home .rpg-section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #c5e8a5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.rpg-home .rpg-kicker-mark,
+.rpg-home .rpg-section-label > span {
+  width: 32px;
+  height: 2px;
+  background: var(--home-lime);
+}
+
+.rpg-home .rpg-hero-location {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 28px;
+  color: rgba(255,255,255,.72);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.rpg-home .rpg-location-dot,
+.rpg-home .rpg-bottom-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--home-lime);
+  box-shadow: 0 0 14px rgba(197,232,165,.7);
+}
+
+.rpg-home .rpg-hero-main h1 {
+  margin: 28px 0;
+  color: #ffffff;
+  font-size: clamp(54px, 7.5vw, 94px);
+  font-weight: 800;
+  line-height: .99;
+  letter-spacing: -4px;
+}
+
+.rpg-home .rpg-hero-main h1 span {
+  color: var(--home-lime);
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.rpg-home .rpg-hero-description {
+  display: flex;
+  gap: 17px;
+  max-width: 540px;
+  margin-top: 27px;
+}
+
+.rpg-home .rpg-description-rule {
+  width: 3px;
+  min-height: 70px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #9bd99e;
+}
+
+.rpg-home .rpg-hero-description p {
+  margin: 0;
+  color: rgba(255,255,255,.84);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.rpg-home .rpg-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.rpg-home .rpg-hero-buttons > * {
+  transition: transform .25s ease, background .25s ease;
+}
+
+.rpg-home .rpg-hero-buttons > *:hover {
+  transform: translateY(-3px);
+}
+
+.rpg-home .rpg-green-tagline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+  color: var(--home-lime);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.rpg-home .rpg-hero-bottom {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 65px;
+  padding: 15px max(5%, calc((100% - 1200px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,.18);
+  background: rgba(5,22,14,.25);
+}
+
+.rpg-home .rpg-bottom-brand,
+.rpg-home .rpg-bottom-center,
+.rpg-home .rpg-scroll-link {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.rpg-home .rpg-bottom-brand {
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.rpg-home .rpg-bottom-center {
+  color: rgba(255,255,255,.7);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.rpg-home .rpg-bottom-center span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--home-lime);
+}
+
+.rpg-home .rpg-scroll-link {
+  color: var(--home-lime);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-decoration: none;
+}
+
+
+/* =========================================
+   RPG TECHNOLOGIES - SOLAR SHOWCASE
+========================================= */
+
+.rpg-home .rpg-solar-section {
+  position: relative;
+  padding: 110px 0 100px;
+  background: #ffffff;
+}
+
+.rpg-home .rpg-solar-heading {
+  margin-bottom: 48px;
+}
+
+.rpg-home .rpg-solar-heading .rpg-section-label,
+.rpg-home .rpg-products-heading .rpg-section-label {
+  color: #64816b;
+}
+
+.rpg-home .rpg-solar-heading .rpg-section-label > span,
+.rpg-home .rpg-products-heading .rpg-section-label > span {
+  background: #729c73;
+}
+
+.rpg-home .rpg-solar-heading-row,
+.rpg-home .rpg-products-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 45px;
+  margin-top: 22px;
+}
+
+.rpg-home .rpg-solar-heading h2,
+.rpg-home .rpg-products-heading h2 {
+  margin: 0;
+  color: var(--home-green);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -2.8px;
+}
+
+.rpg-home .rpg-solar-heading h2 span,
+.rpg-home .rpg-products-heading h2 span {
+  color: #7b9e70;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.rpg-home .rpg-solar-heading-row > p,
+.rpg-home .rpg-products-heading-row > p {
+  max-width: 410px;
+  margin: 0 0 5px;
+  color: var(--home-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* Solar editorial grid */
+
+.rpg-home .rpg-solar-editorial-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 22px;
+}
+
+.rpg-home .rpg-solar-feature {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e5ebe2;
+  border-radius: 7px;
+  background: #f0f3ed;
+  transition: box-shadow 0.35s ease;
+}
+
+.rpg-home .rpg-solar-feature:hover {
+  box-shadow: 0 16px 38px rgba(21, 60, 41, 0.10);
+}
+
+.rpg-home .rpg-solar-residential {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.rpg-home .rpg-solar-commercial {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rpg-home .rpg-solar-equipment {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.rpg-home .rpg-solar-feature-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.rpg-home .rpg-solar-feature-image {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #e7eee4;
+}
+
+.rpg-home .rpg-solar-feature-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 25, 16, 0.08),
+    transparent 35%,
+    rgba(5, 25, 16, 0.12)
+  );
+}
+
+.rpg-home .rpg-solar-feature-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 170px;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.rpg-home .rpg-solar-feature:hover img {
+  transform: scale(1.055);
+}
+
+.rpg-home .rpg-solar-residential .rpg-solar-feature-image img {
+  min-height: 400px;
+}
+
+.rpg-home .rpg-solar-image-label {
+  position: absolute;
+  z-index: 1;
+  top: 18px;
+  left: 18px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(8, 35, 22, 0.48);
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+/* Card content */
+
+.rpg-home .rpg-solar-feature-content {
+  padding: 22px 25px 25px;
+  background: #f2f5ef;
+}
+
+.rpg-home .rpg-solar-category {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #718c6d;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.rpg-home .rpg-solar-feature-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.rpg-home .rpg-solar-feature-title h3 {
+  margin: 0 0 7px;
+  color: var(--home-green);
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.rpg-home .rpg-solar-feature-title p {
+  margin: 0;
+  color: var(--home-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Circular arrows */
+
+.rpg-home .rpg-solar-arrow,
+.rpg-home .rpg-product-arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--home-green);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.rpg-home .rpg-solar-feature:hover .rpg-solar-arrow,
+.rpg-home .rpg-product-row:hover .rpg-product-arrow {
+  transform: rotate(45deg);
+  background: #6f966d;
+}
+
+/* Bottom link strip */
+
+.rpg-home .rpg-solar-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid #e5ebe3;
+}
+
+.rpg-home .rpg-solar-bottom > span {
+  color: #839185;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.rpg-home .rpg-solar-bottom a,
+.rpg-home .rpg-products-main-link,
+.rpg-home .rpg-green-feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--home-green);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .rpg-home .rpg-solar-section {
+    padding: 85px 0;
+  }
+
+  .rpg-home .rpg-solar-editorial-grid {
+    grid-template-rows: 240px 240px;
+    gap: 16px;
+  }
+
+  .rpg-home .rpg-solar-feature-content {
+    padding: 17px;
+  }
+
+  .rpg-home .rpg-solar-feature-title h3 {
+    font-size: 18px;
+  }
+
+  .rpg-home .rpg-solar-feature-title p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .rpg-home .rpg-solar-section {
+    padding: 75px 0;
+  }
+
+  .rpg-home .rpg-solar-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .rpg-home .rpg-solar-heading h2 {
+    font-size: 43px;
+    letter-spacing: -1.8px;
+  }
+
+  .rpg-home .rpg-solar-editorial-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .rpg-home .rpg-solar-feature {
+    min-height: 0;
+  }
+
+  .rpg-home .rpg-solar-feature-image {
+    height: 230px;
+    flex: none;
+  }
+
+  .rpg-home .rpg-solar-residential .rpg-solar-feature-image img {
+    min-height: 230px;
+  }
+
+  .rpg-home .rpg-solar-feature-title h3 {
+    font-size: 19px;
+  }
+
+  .rpg-home .rpg-solar-feature-title p {
+    font-size: 12px;
+  }
+
+  .rpg-home .rpg-solar-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+/* =========================================
+   RPG TECHNOLOGIES - PRODUCT CATEGORIES
+========================================= */
+
+.rpg-home .rpg-products-section {
+  position: relative;
+  padding: 110px 0;
+  background: #f2f5ef;
+}
+
+.rpg-home .rpg-products-heading {
+  margin-bottom: 48px;
+}
+
+/* Main layout */
+
+.rpg-home .rpg-products-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 55px;
+  align-items: stretch;
+}
+
+/* Intro panel */
+
+.rpg-home .rpg-products-intro {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 440px;
+  overflow: hidden;
+  padding: 45px;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(9, 38, 25, 0.94),
+      rgba(21, 60, 41, 0.91)
+    ),
+    url("/images/solar/solar-equipment.jpg") center / cover;
+}
+
+.rpg-home .rpg-products-intro::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 250px;
+  height: 250px;
+  right: -100px;
+  bottom: -110px;
+  border: 1px solid rgba(197, 232, 165, 0.18);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 25px rgba(197, 232, 165, 0.04),
+    0 0 0 50px rgba(197, 232, 165, 0.03);
+}
+
+.rpg-home .rpg-products-intro-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 32px;
+  border: 1px solid rgba(197, 232, 165, 0.4);
+  border-radius: 50%;
+  color: var(--home-lime);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.rpg-home .rpg-products-intro > span {
+  color: var(--home-lime);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rpg-home .rpg-products-intro h3 {
+  margin: 18px 0;
+  color: #ffffff;
+  font-size: clamp(30px, 3.4vw, 43px);
+  line-height: 1.15;
+  letter-spacing: -1.3px;
+}
+
+.rpg-home .rpg-products-intro p {
+  max-width: 340px;
+  margin: 0 0 30px;
+  color: rgba(255, 255, 255, 0.73);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.rpg-home .rpg-products-main-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--home-lime);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: gap 0.25s ease;
+}
+
+.rpg-home .rpg-products-main-link:hover {
+  gap: 15px;
+}
+
+/* Product list */
+
+.rpg-home .rpg-products-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rpg-home .rpg-product-row {
+  border-bottom: 1px solid #dce5d9;
+  transition: background 0.25s ease;
+}
+
+.rpg-home .rpg-product-row:first-child {
+  border-top: 1px solid #dce5d9;
+}
+
+.rpg-home .rpg-product-row:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.rpg-home .rpg-product-row-link {
+  display: grid;
+  grid-template-columns: 35px 48px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 17px;
+  padding: 22px 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.rpg-home .rpg-product-number {
+  color: #92a293;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rpg-home .rpg-product-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: #587d58;
+  background: #e2ebdf;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.rpg-home .rpg-product-row:hover .rpg-product-icon {
+  color: #ffffff;
+  background: var(--home-green);
+  transform: scale(1.06);
+}
+
+.rpg-home .rpg-product-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.rpg-home .rpg-product-copy > span {
+  color: #789074;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.rpg-home .rpg-product-copy strong {
+  color: var(--home-green);
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.rpg-home .rpg-product-copy small {
+  color: var(--home-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.rpg-home .rpg-product-arrow {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--home-green);
+  background: #e2ebdf;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.rpg-home .rpg-product-row:hover .rpg-product-arrow {
+  color: #ffffff;
+  background: #6f966d;
+  transform: rotate(45deg);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .rpg-home .rpg-products-section {
+    padding: 85px 0;
+  }
+
+  .rpg-home .rpg-products-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .rpg-home .rpg-products-intro {
+    min-height: 350px;
+    padding: 40px;
+  }
+
+  .rpg-home .rpg-products-intro h3 {
+    max-width: 500px;
+  }
+
+  .rpg-home .rpg-products-intro p {
+    max-width: 480px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .rpg-home .rpg-products-section {
+    padding: 75px 0;
+  }
+
+  .rpg-home .rpg-products-heading {
+    margin-bottom: 35px;
+  }
+
+  .rpg-home .rpg-products-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .rpg-home .rpg-products-heading h2 {
+    font-size: 43px;
+    letter-spacing: -1.8px;
+  }
+
+  .rpg-home .rpg-products-intro {
+    min-height: 360px;
+    padding: 30px;
+  }
+
+  .rpg-home .rpg-products-intro-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 24px;
+  }
+
+  .rpg-home .rpg-products-intro h3 {
+    font-size: 32px;
+  }
+
+  .rpg-home .rpg-products-intro p {
+    font-size: 13px;
+  }
+
+  .rpg-home .rpg-product-row-link {
+    grid-template-columns: 25px 40px minmax(0, 1fr) 32px;
+    gap: 10px;
+    padding: 18px 0;
+  }
+
+  .rpg-home .rpg-product-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .rpg-home .rpg-product-copy strong {
+    font-size: 14px;
+  }
+
+  .rpg-home .rpg-product-copy small {
+    font-size: 11px;
+  }
+
+  .rpg-home .rpg-product-arrow {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
+/* =========================================
+   RPG TECHNOLOGIES - GO GREEN FEATURE
+========================================= */
+
+.rpg-home .rpg-green-feature {
+  position: relative;
+  isolation: isolate;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--home-deep);
+}
+
+/* Background image */
+
+.rpg-home .rpg-green-feature-image,
+.rpg-home .rpg-green-feature-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.rpg-home .rpg-green-feature-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s ease;
+}
+
+.rpg-home .rpg-green-feature:hover .rpg-green-feature-image img {
+  transform: scale(1.025);
+}
+
+/* Dark image overlay */
+
+.rpg-home .rpg-green-feature-overlay {
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 29, 18, 0.96) 0%,
+    rgba(5, 29, 18, 0.84) 42%,
+    rgba(5, 29, 18, 0.48) 72%,
+    rgba(5, 29, 18, 0.20) 100%
+  );
+}
+
+/* Content container */
+
+.rpg-home .rpg-green-feature-inner {
+  width: min(var(--container), 100% - 40px);
+  padding-top: 105px;
+  padding-bottom: 100px;
+}
+
+.rpg-home .rpg-green-feature-content {
+  max-width: 690px;
+}
+
+/* Section label */
+
+.rpg-home .rpg-green-feature-label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--home-lime);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rpg-home .rpg-green-feature-label svg {
+  flex-shrink: 0;
+}
+
+/* Main heading */
+
+.rpg-home .rpg-green-feature-content h2 {
+  margin: 25px 0;
+  color: #ffffff;
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+  font-weight: 750;
+}
+
+.rpg-home .rpg-green-feature-content h2 span {
+  color: var(--home-lime);
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Description */
+
+.rpg-home .rpg-green-feature-content > p {
+  max-width: 540px;
+  margin: 0 0 30px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* Feature link */
+
+.rpg-home .rpg-green-feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--home-lime);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: gap 0.25s ease;
+}
+
+.rpg-home .rpg-green-feature-link:hover {
+  gap: 16px;
+}
+
+/* Feature points */
+
+.rpg-home .rpg-green-feature-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  margin-top: 65px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rpg-home .rpg-green-feature-points > div {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rpg-home .rpg-green-feature-points svg {
+  flex-shrink: 0;
+  color: var(--home-lime);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .rpg-home .rpg-green-feature {
+    min-height: 620px;
+  }
+
+  .rpg-home .rpg-green-feature-inner {
+    padding-top: 85px;
+    padding-bottom: 85px;
+  }
+
+  .rpg-home .rpg-green-feature-content {
+    max-width: 620px;
+  }
+
+  .rpg-home .rpg-green-feature-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(5, 29, 18, 0.94),
+      rgba(5, 29, 18, 0.72)
+    );
+  }
+
+  .rpg-home .rpg-green-feature-points {
+    gap: 24px;
+    margin-top: 50px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .rpg-home .rpg-green-feature {
+    min-height: 650px;
+  }
+
+  .rpg-home .rpg-green-feature-image img {
+    object-position: 60% center;
+  }
+
+  .rpg-home .rpg-green-feature-overlay {
+    background: rgba(5, 29, 18, 0.82);
+  }
+
+  .rpg-home .rpg-green-feature-inner {
+    padding-top: 80px;
+    padding-bottom: 75px;
+  }
+
+  .rpg-home .rpg-green-feature-content {
+    max-width: 100%;
+  }
+
+  .rpg-home .rpg-green-feature-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .rpg-home .rpg-green-feature-content h2 {
+    margin: 22px 0;
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+
+  .rpg-home .rpg-green-feature-content > p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .rpg-home .rpg-green-feature-points {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 45px;
+    padding-top: 22px;
+  }
+
+  .rpg-home .rpg-green-feature-points > div {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================
+   RPG TECHNOLOGIES - CONTACT CTA
+========================================= */
+
+.rpg-home > .section-dark {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 105px 0;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(197, 232, 165, 0.10),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 90%,
+      rgba(197, 232, 165, 0.08),
+      transparent 32%
+    ),
+    var(--home-deep);
+}
+
+/* Decorative background details */
+
+.rpg-home > .section-dark::before,
+.rpg-home > .section-dark::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(197, 232, 165, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rpg-home > .section-dark::before {
+  top: -150px;
+  left: -100px;
+}
+
+.rpg-home > .section-dark::after {
+  right: -120px;
+  bottom: -170px;
+  width: 340px;
+  height: 340px;
+}
+
+/* CTA content */
+
+.rpg-home > .section-dark .cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rpg-home > .section-dark .cta-inner h2 {
+  max-width: 780px;
+  margin: 0 auto 22px;
+  color: #ffffff;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 750;
+  line-height: 1.13;
+  letter-spacing: -1.8px;
+}
+
+.rpg-home > .section-dark .cta-inner p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* CTA buttons */
+
+.rpg-home > .section-dark .btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.rpg-home > .section-dark .btn-group > * {
+  min-height: 50px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.rpg-home > .section-dark .btn-group > *:hover {
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .rpg-home > .section-dark {
+    padding: 85px 0;
+  }
+
+  .rpg-home > .section-dark .cta-inner h2 {
+    max-width: 700px;
+    font-size: 44px;
+  }
+
+  .rpg-home > .section-dark .cta-inner p {
+    max-width: 580px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .rpg-home > .section-dark {
+    padding: 75px 0;
+  }
+
+  .rpg-home > .section-dark .cta-inner {
+    padding: 0 8px;
+  }
+
+  .rpg-home > .section-dark .cta-inner h2 {
+    margin-bottom: 18px;
+    font-size: 35px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
+
+  .rpg-home > .section-dark .cta-inner p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .rpg-home > .section-dark .btn-group {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .rpg-home > .section-dark .btn-group > * {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================
+   HOVER AND MOTION
+========================================= */
+
+@keyframes rpg-home-hero-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rpg-home .rpg-hero-photo {
+    animation: none;
+  }
+
+  .rpg-home *,
+  .rpg-home *::before,
+  .rpg-home *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .rpg-home .rpg-hero {
+    min-height: 720px;
+  }
+
+  .rpg-home .rpg-solar-editorial-grid {
+    grid-template-rows: 240px 240px;
+    gap: 16px;
+  }
+
+  .rpg-home .rpg-solar-feature-content {
+    padding: 17px;
+  }
+
+  .rpg-home .rpg-solar-feature-title h3 {
+    font-size: 18px;
+  }
+
+  .rpg-home .rpg-products-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .rpg-home .rpg-products-intro {
+    min-height: 350px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .rpg-home .container,
+  .rpg-home .rpg-hero-inner {
+    width: 88%;
+  }
+
+.rpg-home .rpg-hero {
+  min-height: max(760px, 100svh);
+}
+
+  .rpg-home .rpg-hero-photo {
+    background-position: 58% center;
+  }
+
+  .rpg-home .rpg-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(5,25,16,.91),
+      rgba(5,25,16,.58)
+    );
+  }
+
+  .rpg-home .rpg-hero-inner {
+    padding-top: 105px;
+    padding-bottom: 125px;
+  }
+
+  .rpg-home .rpg-hero-kicker {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .rpg-home .rpg-hero-main h1 {
+    font-size: clamp(46px, 12vw, 65px);
+    letter-spacing: -2.5px;
+  }
+
+  .rpg-home .rpg-hero-description p {
+    font-size: 14px;
+  }
+
+  .rpg-home .rpg-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rpg-home .rpg-hero-buttons > * {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rpg-home .rpg-green-tagline {
+    font-size: 8px;
+    line-height: 1.7;
+    letter-spacing: 1px;
+  }
+
+  .rpg-home .rpg-hero-bottom {
+    padding: 14px 6%;
+  }
+
+  .rpg-home .rpg-bottom-center {
+    display: none;
+  }
+
+  .rpg-home .rpg-scroll-link {
+    font-size: 8px;
+  }
+
+  .rpg-home .rpg-solar-section,
+  .rpg-home .rpg-products-section {
+    padding: 75px 0;
+  }
+
+  .rpg-home .rpg-solar-heading-row,
+  .rpg-home .rpg-products-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .rpg-home .rpg-solar-heading h2,
+  .rpg-home .rpg-products-heading h2 {
+    font-size: 43px;
+    letter-spacing: -1.8px;
+  }
+
+  .rpg-home .rpg-solar-editorial-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .rpg-home .rpg-solar-feature {
+    min-height: 0;
+  }
+
+  .rpg-home .rpg-solar-feature-image {
+    height: 230px;
+    flex: none;
+  }
+
+  .rpg-home .rpg-solar-residential .rpg-solar-feature-image img {
+    min-height: 230px;
+  }
+
+  .rpg-home .rpg-solar-feature-title h3 {
+    font-size: 19px;
+  }
+
+  .rpg-home .rpg-solar-feature-title p {
+    font-size: 12px;
+  }
+
+  .rpg-home .rpg-solar-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .rpg-home .rpg-products-intro {
+    min-height: 360px;
+    padding: 30px;
+  }
+
+  .rpg-home .rpg-product-row-link {
+    grid-template-columns: 25px 40px minmax(0,1fr) 32px;
+    gap: 10px;
+    padding: 18px 0;
+  }
+
+  .rpg-home .rpg-product-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .rpg-home .rpg-product-copy strong {
+    font-size: 14px;
+  }
+
+  .rpg-home .rpg-product-copy small {
+    font-size: 11px;
+  }
+
+  .rpg-home .rpg-product-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .rpg-home .rpg-green-feature {
+    min-height: 650px;
+  }
+
+  .rpg-home .rpg-green-feature-image img {
+    object-position: 60% center;
+  }
+
+  .rpg-home .rpg-green-feature-overlay {
+    background: rgba(5,29,18,.78);
+  }
+
+  .rpg-home .rpg-green-feature-inner {
+    padding-top: 80px;
+    padding-bottom: 75px;
+  }
+
+  .rpg-home .rpg-green-feature-content h2 {
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+
+  .rpg-home .rpg-green-feature-content > p {
+    font-size: 14px;
+  }
+
+  .rpg-home .rpg-green-feature-points {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 45px;
+  }
+
+  .rpg-home > .section-dark {
+    padding: 70px 0;
+  }
+
+  .rpg-home > .section-dark .btn-group {
+    flex-direction: column;
+  }
+
+  .rpg-home > .section-dark .btn-group > * {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================
+   SOLUTION QUICK NAVIGATION
+========================================= */
+
+
+.rpg-home .rpg-solution-navigation {
+  position: relative;
+  z-index: 4;
+  padding: 85px 0 95px;
+  background: #edf3e9;
+}
+
+.rpg-home .rpg-solution-heading {
+  max-width: 680px;
+  margin-bottom: 42px;
+}
+
+.rpg-home .rpg-solution-heading > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #64816b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rpg-home .rpg-solution-heading > span::before {
+  content: "";
+  width: 25px;
+  height: 1px;
+  background: #729c73;
+}
+
+.rpg-home .rpg-solution-heading h2 {
+  margin: 17px 0 12px;
+  color: #153c29;
+  font-size: clamp(34px, 4.5vw, 50px);
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+}
+
+.rpg-home .rpg-solution-heading p {
+  max-width: 490px;
+  margin: 0;
+  color: #68766d;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.rpg-home .rpg-solution-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.rpg-home .rpg-solution-grid-item {
+  min-width: 0;
+}
+
+.rpg-home .rpg-solution-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 255px;
+  height: 100%;
+  padding: 30px 25px 25px;
+  overflow: hidden;
+  border: 1px solid #dce7d8;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #153c29;
+  text-decoration: none;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.rpg-home .rpg-solution-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #729c73;
+  transition: width 0.35s ease;
+}
+
+.rpg-home .rpg-solution-card:hover {
+  transform: translateY(-7px);
+  border-color: #b9cfb4;
+  box-shadow: 0 18px 38px rgba(21, 60, 41, 0.09);
+}
+
+.rpg-home .rpg-solution-card:hover::after {
+  width: 100%;
+}
+
+.rpg-home .rpg-solution-number {
+  position: absolute;
+  top: 27px;
+  right: 25px;
+  color: #a0b09d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.rpg-home .rpg-solution-icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 25px;
+  border-radius: 50%;
+  color: #47764c;
+  background: #eaf2e8;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.rpg-home .rpg-solution-card:hover .rpg-solution-icon {
+  color: #ffffff;
+  background: #47764c;
+  transform: rotate(-6deg);
+}
+
+.rpg-home .rpg-solution-card h3 {
+  margin: 0 0 9px;
+  color: #153c29;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.rpg-home .rpg-solution-card p {
+  margin: 0;
+  color: #68766d;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.rpg-home .rpg-solution-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 23px;
+  color: #527c50;
+  font-size: 12px;
+  font-weight: 800;
+  transition: gap 0.25s ease;
+}
+
+.rpg-home .rpg-solution-card:hover .rpg-solution-link {
+  gap: 13px;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .rpg-home .rpg-solution-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .rpg-home .rpg-solution-card {
+    min-height: 235px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .rpg-home .rpg-solution-navigation {
+    padding: 65px 0 70px;
+  }
+
+  .rpg-home .rpg-solution-heading {
+    margin-bottom: 30px;
+  }
+
+  .rpg-home .rpg-solution-heading h2 {
+    font-size: 34px;
+    letter-spacing: -1.2px;
+  }
+
+  .rpg-home .rpg-solution-heading p {
+    font-size: 13px;
+  }
+
+  .rpg-home .rpg-solution-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .rpg-home .rpg-solution-card {
+    min-height: 215px;
+    padding: 25px;
+  }
+
+  .rpg-home .rpg-solution-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* =========================================
+   HOMEPAGE EV CHARGING SHOWCASE
+========================================= */
+
+.rpg-home .rpg-ev-showcase {
+  position: relative;
+  isolation: isolate;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #092619;
+}
+
+.rpg-home .rpg-ev-image,
+.rpg-home .rpg-ev-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.rpg-home .rpg-ev-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rpg-home .rpg-ev-overlay {
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 25, 16, .96) 0%,
+    rgba(5, 25, 16, .83) 48%,
+    rgba(5, 25, 16, .30) 100%
+  );
+}
+
+.rpg-home .rpg-ev-inner {
+  padding-top: 90px;
+  padding-bottom: 80px;
+}
+
+.rpg-home .rpg-ev-content {
+  max-width: 660px;
+}
+
+.rpg-home .rpg-ev-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rpg-home .rpg-ev-content h2 {
+  margin: 25px 0;
+  color: #ffffff;
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.rpg-home .rpg-ev-content h2 span {
+  color: #c5e8a5;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.rpg-home .rpg-ev-content > p {
+  max-width: 540px;
+  margin: 0 0 28px;
+  color: rgba(255,255,255,.8);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.rpg-home .rpg-ev-main-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.rpg-home .rpg-ev-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  max-width: 780px;
+  margin-top: 55px;
+}
+
+.rpg-home .rpg-ev-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,.22);
+  color: #ffffff;
+  background: rgba(255,255,255,.08);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: background .25s ease, transform .25s ease;
+}
+
+.rpg-home .rpg-ev-option:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.15);
+}
+
+.rpg-home .rpg-ev-option > span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #c5e8a5;
+  background: rgba(197,232,165,.12);
+}
+
+.rpg-home .rpg-ev-option > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rpg-home .rpg-ev-option strong {
+  font-size: 13px;
+}
+
+.rpg-home .rpg-ev-option small {
+  color: rgba(255,255,255,.65);
+  font-size: 11px;
+}
+
+.rpg-home .rpg-ev-bottom {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 35px;
+  color: #c5e8a5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 600px) {
+  .rpg-home .rpg-ev-showcase {
+    min-height: 700px;
+  }
+
+  .rpg-home .rpg-ev-image img {
+    object-position: 60% center;
+  }
+
+  .rpg-home .rpg-ev-overlay {
+    background: rgba(5,25,16,.82);
+  }
+
+  .rpg-home .rpg-ev-inner {
+    padding-top: 75px;
+    padding-bottom: 65px;
+  }
+
+  .rpg-home .rpg-ev-content h2 {
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+
+  .rpg-home .rpg-ev-content > p {
+    font-size: 13px;
+  }
+
+  .rpg-home .rpg-ev-options {
+    grid-template-columns: 1fr;
+    margin-top: 38px;
+  }
+
+  .rpg-home .rpg-ev-option {
+    padding: 16px;
+  }
+}
+
+
+/* =========================================
+   WHY RPG TECHNOLOGIES
+========================================= */
+
+.rpg-home .rpg-why-section {
+  padding: 110px 0;
+  background: #ffffff;
+}
+
+.rpg-home .rpg-why-layout {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.rpg-home .rpg-why-intro {
+  max-width: 460px;
+}
+
+.rpg-home .rpg-why-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #64816b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rpg-home .rpg-why-label > span {
+  width: 30px;
+  height: 2px;
+  background: #729c73;
+}
+
+.rpg-home .rpg-why-intro h2 {
+  margin: 24px 0;
+  color: #153c29;
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.rpg-home .rpg-why-intro h2 span {
+  color: #7b9e70;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.rpg-home .rpg-why-intro > p {
+  margin: 0 0 27px;
+  color: #68766d;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.rpg-home .rpg-why-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #47764c;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.rpg-home .rpg-why-list {
+  border-top: 1px solid #e2e9df;
+}
+
+.rpg-home .rpg-why-item {
+  display: grid;
+  grid-template-columns: 32px 50px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  padding: 24px 5px;
+  border-bottom: 1px solid #e2e9df;
+}
+
+.rpg-home .rpg-why-number {
+  color: #92a293;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.rpg-home .rpg-why-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #47764c;
+  background: #eaf2e8;
+}
+
+.rpg-home .rpg-why-copy h3 {
+  margin: 0 0 7px;
+  color: #153c29;
+  font-size: 16px;
+}
+
+.rpg-home .rpg-why-copy p {
+  margin: 0;
+  color: #68766d;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .rpg-home .rpg-why-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .rpg-home .rpg-why-intro {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rpg-home .rpg-why-section {
+    padding: 75px 0;
+  }
+
+  .rpg-home .rpg-why-intro h2 {
+    font-size: 44px;
+  }
+
+  .rpg-home .rpg-why-item {
+    grid-template-columns: 25px 42px minmax(0, 1fr);
+    gap: 11px;
+    padding: 19px 0;
+  }
+
+  .rpg-home .rpg-why-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rpg-home .rpg-why-copy h3 {
+    font-size: 14px;
+  }
+}
+.rpg-home .rpg-brand-item:first-child {
+  border-left: 1px solid #d3dfd0;
+}
+
+.rpg-home .rpg-brand-item:hover {
+  background: rgba(255, 255, 255, .65);
+}
+
+.rpg-home .rpg-brand-number {
+  color: #8b9b8b;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rpg-home .rpg-brand-item strong {
+  color: #153c29;
+  font-size: clamp(14px, 1.5vw, 19px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.rpg-home .rpg-brand-arrow {
+  display: flex;
+  justify-content: flex-end;
+  color: #64816b;
+}
+
+.rpg-home .rpg-brand-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.rpg-home .rpg-brand-bottom p {
+  margin: 0;
+  color: #758078;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.rpg-home .rpg-brand-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  color: #47764c;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (max-width: 850px) {
+  .rpg-home .rpg-brand-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .rpg-home .rpg-brand-item:nth-child(4) {
+    border-left: 1px solid #d3dfd0;
+  }
+}
+
+@media (max-width: 550px) {
+  .rpg-home .rpg-brand-showcase {
+    padding: 70px 0;
+  }
+
+  .rpg-home .rpg-brand-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rpg-home .rpg-brand-item {
+    min-height: 115px;
+    padding: 17px 13px;
+  }
+
+  .rpg-home .rpg-brand-item:nth-child(odd) {
+    border-left: 1px solid #d3dfd0;
+  }
+
+  .rpg-home .rpg-brand-item:nth-child(even) {
+    border-right: 1px solid #d3dfd0;
+  }
+
+  .rpg-home .rpg-brand-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+/* =========================================
+   SOLAR SOLUTIONS CATEGORY NAVIGATION
+========================================= */
+
+.solar-page .solar-category-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 18px 0;
+}
+
+.solar-page .solar-category-navigation a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 24px;
+  border: 1px solid #d5e3d8;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #183b2b;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.solar-page .solar-category-navigation a:hover {
+  border-color: #16834a;
+  background: #eaf4ec;
+  color: #16834a;
+  transform: translateY(-2px);
+}
+
+.solar-page .solar-category-navigation a.active {
+  border-color: #16834a;
+  background: #16834a;
+  color: #ffffff;
+  box-shadow: 0 5px 14px rgba(22, 131, 74, 0.18);
+}
+
+@media (max-width: 600px) {
+  .solar-page .solar-category-navigation {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 16px 0;
+  }
+
+  .solar-page .solar-category-navigation a {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+/* =========================================
+   RPG SOLAR SOLUTIONS - CINEMATIC HERO
+========================================= */
+
+.solar-page .page-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 0 145px;
+  background: #102d20;
+  color: #ffffff;
+}
+
+.solar-page .page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    url("/images/solar/commercial-solar.jpg")
+    center 55% / cover no-repeat;
+  transform: scale(1.025);
+}
+
+.solar-page .page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 27, 18, 0.94) 0%,
+      rgba(5, 27, 18, 0.72) 48%,
+      rgba(5, 27, 18, 0.15) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5, 27, 18, 0.55),
+      transparent 45%
+    );
+}
+
+.solar-page .page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.solar-page .page-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.solar-page .page-hero h1 {
+  max-width: 850px;
+  margin: 28px 0 22px;
+  color: #ffffff;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.04;
+  letter-spacing: -3px;
+}
+
+.solar-page .page-hero .lead {
+  max-width: 550px;
+  color: #e2eee5;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.solar-page .solar-category-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  margin-top: 30px;
+}
+
+.solar-page .solar-category-highlights > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.solar-page .solar-category-highlights svg {
+  flex-shrink: 0;
+  color: #c5e8a5;
+}
+
+@media (max-width: 650px) {
+  .solar-page .page-hero {
+    min-height: 600px;
+    padding: 90px 0 120px;
+  }
+
+  .solar-page .page-hero::before {
+    background-position: 58% center;
+  }
+
+  .solar-page .page-hero h1 {
+    font-size: clamp(43px, 11vw, 60px);
+    letter-spacing: -2px;
+  }
+
+  .solar-page .page-hero .lead {
+    font-size: 15px;
+  }
+
+  .solar-page .solar-category-highlights {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+/* =========================================================
+   RPG SOLAR SOLUTIONS - COMPLETE PAGE REDESIGN
+   Final scoped overrides
+========================================================= */
+
+/* ---------- SHARED NAVBAR ON SOLAR PAGE ---------- */
+
+body:has(.solar-page) .rpg-navbar {
+  background: rgba(13, 43, 29, 0.96) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body:has(.solar-page) .rpg-navbar-top {
+  background: rgba(13, 43, 29, 0.96) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12) !important;
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-navbar-inner {
+  min-height: 82px;
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-brand-name,
+body:has(.solar-page) .rpg-navbar .rpg-brand-tagline,
+body:has(.solar-page) .rpg-navbar .rpg-nav-link {
+  color: #ffffff !important;
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-nav-link {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-nav-link:hover,
+body:has(.solar-page) .rpg-navbar .rpg-nav-active {
+  color: #c5e8a5 !important;
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-nav-link::after {
+  background: #c5e8a5;
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-nav-cta {
+  min-height: 45px;
+  padding: 0 20px;
+  border: 1px solid #c5e8a5;
+  border-radius: 5px;
+  background: #c5e8a5;
+  color: #153c29;
+  font-size: 13px;
+  font-weight: 800;
+  transition: all 0.25s ease;
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-nav-cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #153c29;
+  transform: translateY(-2px);
+}
+
+body:has(.solar-page) .rpg-navbar .rpg-menu-toggle {
+  color: #ffffff;
+}
+
+body:has(.solar-page) .rpg-navbar-scrolled {
+  background: rgba(13, 43, 29, 0.97) !important;
+}
+
+@media (max-width: 1050px) {
+  body:has(.solar-page) .rpg-navbar .rpg-nav-links {
+    background: #102d20;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0 0 12px 12px;
+    padding: 20px 24px 24px;
+  }
+
+  body:has(.solar-page) .rpg-navbar .rpg-nav-link {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  body:has(.solar-page) .rpg-navbar .rpg-nav-cta {
+    margin-top: 12px;
+  }
+}
+
+/* ---------- SOLAR PAGE FOUNDATION ---------- */
+
+.solar-page {
+  overflow: hidden;
+  background: #ffffff;
+  color: #26382d;
+}
+
+.solar-page .section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.solar-page .container {
+  width: min(1180px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solar-page .section-alt {
+  background: #f3f7f2;
+}
+
+/* ---------- CATEGORY NAVIGATION ---------- */
+
+.solar-page > section:first-child {
+  padding-top: 112px;
+  padding-bottom: 0;
+  background: #f3f7f2;
+}
+
+.solar-page .solar-category-navigation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  padding: 20px 0 28px;
+}
+
+.solar-page .solar-category-navigation a,
+.solar-page .solar-category-navigation a:visited {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 14px 20px;
+  border: 1px solid #d8e3d8;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #31533d;
+  font-size: 14px;
+  font-weight: 750;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.solar-page .solar-category-navigation a:hover {
+  border-color: #398653;
+  background: #eaf3e9;
+  color: #176238;
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px rgba(25, 74, 43, 0.08);
+}
+
+.solar-page .solar-category-navigation a.active,
+.solar-page .solar-category-navigation a.active:visited {
+  border-color: #173f2b;
+  background: #173f2b;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(23, 63, 43, 0.16);
+}
+
+/* ---------- SOLAR HERO ---------- */
+
+.solar-page .page-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 650px;
+  padding: 110px 0 120px;
+  overflow: hidden;
+  background: #102d20;
+  color: #ffffff;
+}
+
+.solar-page .page-hero::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  content: "";
+  background:
+    url("/images/solar/commercial-solar.jpg")
+    center 54% / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.solar-page .page-hero::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 27, 18, 0.96) 0%,
+      rgba(5, 27, 18, 0.78) 46%,
+      rgba(5, 27, 18, 0.22) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5, 27, 18, 0.58),
+      transparent 55%
+    );
+}
+
+.solar-page .page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.solar-page .page-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.solar-page .page-hero h1 {
+  max-width: 850px;
+  margin: 25px 0 22px;
+  color: #ffffff;
+  font-size: clamp(46px, 6.5vw, 82px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -2.8px;
+}
+
+.solar-page .page-hero .lead {
+  max-width: 610px;
+  margin: 0;
+  color: #e0ebe3;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.solar-page .solar-category-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 35px;
+}
+
+.solar-page .solar-category-highlights > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.solar-page .solar-category-highlights svg {
+  flex-shrink: 0;
+  color: #c5e8a5;
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+
+.solar-page .section-header {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+
+.solar-page .section-header.centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.solar-page .section-header .eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #398653;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.solar-page .section-header h2 {
+  margin: 0 0 18px;
+  color: #153c29;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.3px;
+}
+
+.solar-page .section-header p {
+  margin: 0;
+  color: #718075;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ---------- CATEGORY INTRODUCTION ---------- */
+
+.solar-page .section-header + .grid {
+  margin-top: 10px;
+}
+
+.solar-page .grid.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.solar-page .config-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  padding: 32px;
+  overflow: hidden;
+  border: 1px solid #e1e9e0;
+  border-radius: 9px;
+  background: #ffffff;
+  box-shadow: 0 10px 32px rgba(24, 57, 34, 0.045);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.solar-page .config-card:hover {
+  transform: translateY(-7px);
+  border-color: #b8d3ba;
+  box-shadow: 0 18px 38px rgba(24, 57, 34, 0.10);
+}
+
+.solar-page .config-card .icon-badge {
+  display: grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  background: #eaf3e9;
+  color: #247345;
+}
+
+.solar-page .config-card h3 {
+  margin: 0 0 13px;
+  color: #173e2a;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.solar-page .config-card p {
+  margin: 0;
+  color: #718075;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.solar-page .solar-consult-card {
+  display: flex;
+  align-items: center;
+  min-height: 250px;
+  padding: 48px;
+  border: 1px solid #dce8dc;
+  border-radius: 10px;
+  background:
+    linear-gradient(110deg, #f2f7f0 0%, #ffffff 75%);
+  box-shadow: 0 12px 34px rgba(24, 57, 34, 0.05);
+}
+
+.solar-page .consult-content {
+  max-width: 760px;
+}
+
+.solar-page .consult-content h3 {
+  margin: 0 0 15px;
+  color: #173e2a;
+  font-size: clamp(23px, 3vw, 31px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.solar-page .consult-content p {
+  margin: 0 0 25px;
+  color: #6e7e72;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.solar-page .btn,
+.solar-page button,
+.solar-page a.btn {
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.solar-page .btn-primary {
+  border-radius: 5px;
+  background: #1b7543;
+  color: #ffffff;
+  font-weight: 750;
+}
+
+.solar-page .btn-primary:hover {
+  background: #125b32;
+  box-shadow: 0 9px 22px rgba(27, 117, 67, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ---------- SOLAR CALCULATOR ---------- */
+
+.solar-page .calculator-wrapper {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid #dfe8df;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(23, 63, 43, 0.08);
+}
+
+.solar-page .calculator-inputs {
+  padding: 42px;
+  background: #f3f7f2;
+}
+
+.solar-page .calculator-results {
+  padding: 42px;
+  background: #ffffff;
+}
+
+.solar-page .calculator-inputs h3,
+.solar-page .calculator-results h3 {
+  margin: 0 0 30px;
+  color: #173e2a;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.solar-page .calculator-wrapper .form-group {
+  margin-bottom: 24px;
+}
+
+.solar-page .calculator-wrapper .form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #344b3a;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.solar-page .calculator-wrapper .input-with-unit {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  overflow: hidden;
+  border: 1px solid #d5e0d5;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.solar-page .calculator-wrapper .unit-prefix {
+  position: static;
+  left: auto;
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  min-width: 48px;
+  border-right: 1px solid #e1e9e1;
+  background: #edf4ec;
+  color: #276a3d;
+  font-weight: 800;
+}
+
+.solar-page .calculator-wrapper .calc-input {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 1px solid #d5e0d5;
+  border-radius: 6px;
+  outline: none;
+  background: #ffffff;
+  color: #183d29;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.solar-page .calculator-wrapper .input-with-unit .calc-input {
+  border: 0;
+}
+
+.solar-page .calculator-wrapper .calc-input:focus {
+  border-color: #388653;
+  box-shadow: 0 0 0 3px rgba(56, 134, 83, 0.12);
+}
+
+.solar-page .calculator-wrapper .field-hint {
+  display: block;
+  margin-top: 8px;
+  color: #849187;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Calculator result cards */
+
+.solar-page .results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.solar-page .result-metric {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 145px;
+  padding: 22px;
+  border: 1px solid #e1e9e1;
+  border-radius: 8px;
+  background: #f8faf7;
+}
+
+.solar-page .result-metric.highlighted {
+  grid-column: 1 / -1;
+  min-height: 170px;
+  border-color: #1d5c39;
+  background:
+    linear-gradient(120deg, #153c29 0%, #276b43 100%);
+  box-shadow: 0 10px 24px rgba(21, 60, 41, 0.14);
+}
+
+.solar-page .metric-label {
+  margin-bottom: 12px;
+  color: #77877a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.solar-page .metric-value {
+  color: #173e2a;
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.solar-page .metric-unit {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.solar-page .metric-sub {
+  margin-top: 10px;
+  color: #879388;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.solar-page .result-metric.highlighted .metric-label,
+.solar-page .result-metric.highlighted .metric-sub {
+  color: #d4e9d7;
+}
+
+.solar-page .result-metric.highlighted .metric-value {
+  color: #ffffff;
+}
+
+.solar-page .result-metric.highlighted .metric-unit {
+  color: #c5e8a5;
+}
+
+/* Calculator assumptions */
+
+.solar-page .calc-assumptions {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #e1e9e1;
+  border-radius: 7px;
+  background: #f7faf6;
+}
+
+.solar-page .assumption-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+  color: #285c39;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.solar-page .calc-assumptions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.solar-page .calc-assumptions li {
+  margin: 7px 0;
+  color: #78867b;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.solar-page .calc-actions {
+  margin-top: 22px;
+}
+
+.solar-page .calc-actions .btn-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 20px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* ---------- SYSTEM CONFIGURATION LIST ---------- */
+
+.solar-page .config-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin: 25px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid #e8eee7;
+  list-style: none;
+}
+
+.solar-page .config-list li {
+  position: relative;
+  padding-left: 22px;
+  color: #66766a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.solar-page .config-list li::before {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  color: #398653;
+  content: "✓";
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* ---------- PRODUCT CATALOGUE ---------- */
+
+.solar-page .section .grid.grid-3 .product-card {
+  height: 100%;
+}
+
+.solar-page .section .grid.grid-3 > * {
+  min-width: 0;
+}
+
+/* ---------- FINAL CONTACT CTA ---------- */
+
+.solar-page .section-dark {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 105px;
+  padding-bottom: 105px;
+  background: #123b28;
+  color: #ffffff;
+}
+
+.solar-page .section-dark::before {
+  position: absolute;
+  z-index: -1;
+  top: -180px;
+  right: -130px;
+  width: 480px;
+  height: 480px;
+  border: 1px solid rgba(197, 232, 165, 0.15);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 45px rgba(197, 232, 165, 0.035),
+    0 0 0 90px rgba(197, 232, 165, 0.025);
+  content: "";
+}
+
+.solar-page .cta-inner {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.solar-page .cta-inner h2 {
+  margin: 0 0 20px;
+  color: #ffffff;
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 850;
+  line-height: 1.13;
+  letter-spacing: -1.5px;
+}
+
+.solar-page .cta-inner .lead {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #d6e4d9;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.solar-page .cta-inner .btn-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.solar-page .cta-inner .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  min-width: 175px;
+  padding: 14px 24px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.solar-page .cta-inner .btn-gold {
+  background: #c5e8a5;
+  color: #153c29;
+}
+
+.solar-page .cta-inner .btn-gold:hover {
+  background: #ffffff;
+  transform: translateY(-3px);
+}
+
+.solar-page .cta-inner .btn-light {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  color: #ffffff;
+}
+
+.solar-page .cta-inner .btn-light:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #153c29;
+  transform: translateY(-3px);
+}
+
+/* ---------- BACK TO HOMEPAGE ---------- */
+
+.solar-page .solar-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 22px 0;
+  color: #487454;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.solar-page .solar-back-link svg {
+  transform: rotate(180deg);
+}
+
+.solar-page .solar-back-link:hover {
+  gap: 14px;
+  color: #153c29;
+}
+
+/* ---------- TABLET RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .solar-page .section {
+    padding-top: 78px;
+    padding-bottom: 78px;
+  }
+
+  .solar-page .page-hero {
+    min-height: 590px;
+  }
+
+  .solar-page .calculator-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-page .calculator-inputs,
+  .solar-page .calculator-results {
+    padding: 34px;
+  }
+
+  .solar-page .grid.grid-3 {
+    gap: 18px;
+  }
+
+  .solar-page .config-card {
+    padding: 25px;
+  }
+}
+
+/* ---------- MOBILE RESPONSIVE ---------- */
+
+@media (max-width: 650px) {
+  .solar-page .container {
+    width: calc(100% - 36px);
+  }
+
+  .solar-page .section {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+
+  .solar-page > section:first-child {
+    padding-top: 88px;
+  }
+
+  .solar-page .solar-category-navigation {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 15px 0 22px;
+  }
+
+  .solar-page .solar-category-navigation a {
+    min-height: 49px;
+    font-size: 13px;
+  }
+
+  .solar-page .page-hero {
+    min-height: 610px;
+    padding: 85px 0 95px;
+  }
+
+  .solar-page .page-hero::before {
+    background-position: 60% center;
+  }
+
+  .solar-page .page-hero::after {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 27, 18, 0.93),
+        rgba(5, 27, 18, 0.65)
+      ),
+      linear-gradient(
+        0deg,
+        rgba(5, 27, 18, 0.5),
+        transparent
+      );
+  }
+
+  .solar-page .page-hero h1 {
+    margin: 22px 0 18px;
+    font-size: clamp(42px, 11vw, 59px);
+    letter-spacing: -1.8px;
+  }
+
+  .solar-page .page-hero .lead {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .solar-page .solar-category-highlights {
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 25px;
+  }
+
+  .solar-page .solar-category-highlights > div {
+    font-size: 12px;
+  }
+
+  .solar-page .section-header {
+    margin-bottom: 32px;
+  }
+
+  .solar-page .section-header h2 {
+    font-size: 31px;
+    letter-spacing: -0.8px;
+  }
+
+  .solar-page .section-header p {
+    font-size: 13px;
+  }
+
+  .solar-page .grid.grid-3 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .solar-page .config-card {
+    min-height: auto;
+    padding: 26px;
+  }
+
+  .solar-page .solar-consult-card {
+    min-height: auto;
+    padding: 28px 23px;
+  }
+
+  .solar-page .consult-content h3 {
+    font-size: 23px;
+  }
+
+  .solar-page .consult-content p {
+    font-size: 13px;
+  }
+
+  .solar-page .calculator-inputs,
+  .solar-page .calculator-results {
+    padding: 25px 19px;
+  }
+
+  .solar-page .calculator-inputs h3,
+  .solar-page .calculator-results h3 {
+    margin-bottom: 23px;
+    font-size: 17px;
+  }
+
+  .solar-page .results-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .solar-page .result-metric {
+    min-height: 125px;
+    padding: 15px;
+  }
+
+  .solar-page .result-metric.highlighted {
+    min-height: 145px;
+  }
+
+  .solar-page .metric-value {
+    font-size: 27px;
+  }
+
+  .solar-page .metric-label {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .solar-page .metric-sub {
+    font-size: 10px;
+  }
+
+  .solar-page .calc-assumptions {
+    padding: 16px;
+  }
+
+  .solar-page .calc-assumptions li {
+    font-size: 10px;
+  }
+
+  .solar-page .section-dark {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  .solar-page .cta-inner h2 {
+    font-size: 35px;
+  }
+
+  .solar-page .cta-inner .lead {
+    font-size: 13px;
+  }
+
+  .solar-page .cta-inner .btn-group {
+    flex-direction: column;
+  }
+
+  .solar-page .cta-inner .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .solar-page .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-page .result-metric.highlighted {
+    grid-column: auto;
+  }
+}
+
+/* ==========================================================================
+   FINAL FIXES - full logo, footer, solar page, home solar cards
+   ========================================================================== */
+
+/* ---------- Full logo (RPG TECHNOLOGIES) ---------- */
+.rpg-brand .rpg-brand-logo-full {
+  display: block;
+  width: auto;
+  height: 88px;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
+  transition: height 0.3s ease;
+}
+
+.rpg-navbar-scrolled .rpg-brand-logo-full {
+  height: 68px;
+}
+
+body:has(.rpg-navbar) header.rpg-navbar .rpg-navbar-inner {
+  min-height: 108px;
+  padding-block: 6px;
+}
+
+body:has(.rpg-navbar) header.rpg-navbar.rpg-navbar-scrolled .rpg-navbar-inner {
+  min-height: 86px;
+}
+
+@media (max-width: 600px) {
+  .rpg-brand .rpg-brand-logo-full {
+    height: 62px;
+  }
+
+  .rpg-navbar-scrolled .rpg-brand-logo-full {
+    height: 54px;
+  }
+
+  body:has(.rpg-navbar) header.rpg-navbar .rpg-navbar-inner {
+    min-height: 80px;
+  }
+
+  body:has(.rpg-navbar) header.rpg-navbar.rpg-navbar-scrolled .rpg-navbar-inner {
+    min-height: 72px;
+  }
+}
+
+.footer-logo-wrap {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.footer-logo-full {
+  display: block;
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-brand-column {
+  max-width: 460px;
+}
+
+.footer-description {
+  margin: 0;
+  max-width: 420px;
+  line-height: 1.7;
+}
+
+/* ---------- Home: Commercial / Equipment cards show their images ---------- */
+.rpg-home .rpg-solar-editorial-grid {
+  grid-template-rows: 300px 300px;
+}
+
+.rpg-home .rpg-solar-commercial .rpg-solar-feature-link,
+.rpg-home .rpg-solar-equipment .rpg-solar-feature-link {
+  flex-direction: row;
+}
+
+.rpg-home .rpg-solar-commercial .rpg-solar-feature-image,
+.rpg-home .rpg-solar-equipment .rpg-solar-feature-image {
+  flex: 0 0 46%;
+}
+
+.rpg-home .rpg-solar-commercial .rpg-solar-feature-image img,
+.rpg-home .rpg-solar-equipment .rpg-solar-feature-image img {
+  min-height: 0;
+}
+
+.rpg-home .rpg-solar-commercial .rpg-solar-feature-content,
+.rpg-home .rpg-solar-equipment .rpg-solar-feature-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .rpg-home .rpg-solar-editorial-grid {
+    grid-template-rows: 280px 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rpg-home .rpg-solar-commercial .rpg-solar-feature-link,
+  .rpg-home .rpg-solar-equipment .rpg-solar-feature-link {
+    flex-direction: column;
+  }
+
+  .rpg-home .rpg-solar-commercial .rpg-solar-feature-image,
+  .rpg-home .rpg-solar-equipment .rpg-solar-feature-image {
+    flex: none;
+  }
+
+  .rpg-home .rpg-solar-commercial .rpg-solar-feature-image img,
+  .rpg-home .rpg-solar-equipment .rpg-solar-feature-image img {
+    min-height: 230px;
+  }
+}
+
+/* ---------- Solar Solutions page ---------- */
+.solar-page .solar-category-section {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.solar-page .solar-category-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.solar-page .solar-category-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #dfe8dd;
+  border-radius: 12px;
+  background: #ffffff;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(18, 60, 42, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.solar-page .solar-category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(18, 60, 42, 0.14);
+}
+
+.solar-page .solar-category-card.active {
+  border-color: #16834a;
+  box-shadow: 0 0 0 2px #16834a, 0 18px 40px rgba(18, 60, 42, 0.14);
+}
+
+.solar-page .solar-category-card-image {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e7eee4;
+}
+
+.solar-page .solar-category-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.solar-page .solar-category-card:hover img {
+  transform: scale(1.05);
+}
+
+.solar-page .solar-category-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 24px 24px;
+}
+
+.solar-page .solar-category-card-body strong {
+  color: #153c29;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.solar-page .solar-category-card-body > span {
+  color: #66766b;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.solar-page .solar-category-card-body em {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  color: #16834a;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.solar-page .section-heading {
+  max-width: 760px;
+  margin-bottom: 36px;
+}
+
+.solar-page .section-heading .eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #398653;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.solar-page .section-heading h2 {
+  margin: 0 0 16px;
+  color: #153c29;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+}
+
+.solar-page .section-heading p {
+  margin: 0;
+  color: #718075;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.solar-page .solar-calculator-section {
+  background: #ffffff;
+}
+
+.solar-page .calculator-wrapper .unit-suffix {
+  border-right: 0;
+  border-left: 1px solid #e1e9e1;
+}
+
+@media (max-width: 900px) {
+  .solar-page .solar-category-cards {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .solar-page .solar-category-card {
+    flex-direction: row;
+  }
+
+  .solar-page .solar-category-card-image {
+    flex: 0 0 42%;
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .solar-page .solar-category-card {
+    flex-direction: column;
+  }
+
+  .solar-page .solar-category-card-image {
+    flex: none;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.rpg-about-hero-content {
+  padding-top: 24px;
+}
+
+/* =========================================
+   EV CHARGING PAGE - IMAGE DESIGN
+========================================= */
+
+.ev-page .ev-page-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 510px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #092619;
+}
+
+.ev-page .ev-page-hero-image,
+.ev-page .ev-page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.ev-page .ev-page-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ev-page .ev-page-hero-overlay {
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 25, 16, .94),
+    rgba(5, 25, 16, .76) 55%,
+    rgba(5, 25, 16, .22)
+  );
+}
+
+.ev-page .ev-page-hero-content {
+  padding-top: 100px;
+  padding-bottom: 85px;
+}
+
+.ev-page .ev-page-hero-content .eyebrow {
+  color: #c5e8a5;
+}
+
+.ev-page .ev-page-hero-content h1 {
+  max-width: 850px;
+  margin: 22px 0;
+  color: #fff;
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.ev-page .ev-page-hero-content .lead {
+  max-width: 650px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.8;
+}
+
+.ev-page .ev-selector-image,
+.ev-page .ev-feasibility-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.ev-page .ev-selector-image {
+  min-height: 210px;
+  margin-top: 8px;
+}
+
+.ev-page .ev-selector-image img,
+.ev-page .ev-feasibility-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ev-page .ev-selector-image img {
+  min-height: 210px;
+}
+
+.ev-page .ev-image-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 35px 18px 17px;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(5,25,16,.9));
+}
+
+.ev-page .ev-image-caption span {
+  color: #c5e8a5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.ev-page .ev-image-caption p {
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+
+.ev-page .feasibility-visual-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ev-page .ev-feasibility-image {
+  height: 230px;
+}
+
+.ev-page .feasibility-card {
+  height: fit-content;
+}
+
+@media (max-width: 900px) {
+  .ev-page .ev-page-hero {
+    min-height: 470px;
+  }
+
+  .ev-page .ev-feasibility-image {
+    height: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ev-page .ev-page-hero {
+    min-height: 560px;
+  }
+
+  .ev-page .ev-page-hero-image img {
+    object-position: 60% center;
+  }
+
+  .ev-page .ev-page-hero-overlay {
+    background: rgba(5,25,16,.76);
+  }
+
+  .ev-page .ev-page-hero-content {
+    padding-top: 90px;
+    padding-bottom: 75px;
+  }
+
+  .ev-page .ev-page-hero-content h1 {
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+
+  .ev-page .ev-page-hero-content .lead {
+    font-size: 14px;
+  }
+
+  .ev-page .ev-selector-image {
+    min-height: 190px;
+  }
+
+  .ev-page .ev-selector-image img {
+    min-height: 190px;
+  }
+
+  .ev-page .ev-feasibility-image {
+    height: 210px;
+  }
+}
+
+
+/* =========================================================
+   RPG TECHNOLOGIES - EV CHARGING PAGE REDESIGN
+   ========================================================= */
+
+.ev-page {
+  overflow: hidden;
+  background: #fff;
+  color: #17251f;
+}
+
+.ev2-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #25834e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+.ev2-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 610px;
+  background: #10271d;
+  overflow: hidden;
+}
+
+.ev2-hero-image,
+.ev2-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.ev2-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ev2-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(7, 24, 16, 0.94) 0%,
+    rgba(7, 24, 16, 0.76) 48%,
+    rgba(7, 24, 16, 0.18) 100%
+  );
+}
+
+.ev2-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  color: #fff;
+}
+
+.ev2-hero .ev2-eyebrow {
+  color: #b5e89a;
+}
+
+.ev2-hero h1 {
+  max-width: 780px;
+  margin: 22px 0;
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  line-height: 1.08;
+  font-weight: 850;
+  letter-spacing: -2px;
+}
+
+.ev2-hero h1 span {
+  display: block;
+  color: #b5e89a;
+}
+
+.ev2-hero-content > p {
+  max-width: 590px;
+  color: rgba(255,255,255,0.82);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.ev2-hero-actions,
+.ev2-final-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.ev2-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ev2-hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 45px;
+}
+
+.ev2-hero-points span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.88);
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
+.ev2-hero-points svg {
+  color: #b5e89a;
+}
+
+.ev2-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.ev2-intro-content h2,
+.ev2-section-heading h2,
+.ev2-feasibility-content h2 {
+  margin: 15px 0 20px;
+  color: #153b2b;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.ev2-intro-content > p,
+.ev2-feasibility-content > p {
+  color: #64736a;
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+.ev2-intro-image {
+  position: relative;
+  height: 440px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.ev2-intro-image img,
+.ev2-solution-image img,
+.ev2-selector-photo img,
+.ev2-comparison-image img,
+.ev2-feasibility-visual > img,
+.ev2-final-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ev2-image-label {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  padding: 20px;
+  border-radius: 13px;
+  background: rgba(10, 37, 25, 0.88);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+.ev2-image-label span {
+  display: block;
+  margin-bottom: 7px;
+  color: #b5e89a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.ev2-image-label strong {
+  font-size: 1.1rem;
+}
+
+.ev2-intro-features {
+  display: grid;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.ev2-intro-features div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #284f3b;
+  font-size: 0.91rem;
+  font-weight: 700;
+}
+
+.ev2-intro-features svg {
+  width: 21px;
+  color: #328c55;
+}
+
+.ev2-solutions-section {
+  background: #f4f8f5;
+}
+
+.ev2-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 38px;
+}
+
+.ev2-section-heading > p {
+  max-width: 440px;
+  margin: 0 0 7px;
+  color: #6b7a70;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.ev2-section-heading.centered {
+  display: block;
+  text-align: center;
+}
+
+.ev2-section-heading.centered > p {
+  max-width: 650px;
+  margin: 14px auto 0;
+}
+
+.ev2-solution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.ev2-solution-card {
+  overflow: hidden;
+  border: 1px solid #e4ebe5;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(20, 54, 35, 0.06);
+}
+
+.ev2-solution-image {
+  position: relative;
+  height: 285px;
+  overflow: hidden;
+}
+
+.ev2-solution-image img {
+  transition: transform 0.6s ease;
+}
+
+.ev2-solution-card:hover .ev2-solution-image img {
+  transform: scale(1.05);
+}
+
+.ev2-image-tag,
+.ev2-comparison-image > span {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 9px 14px;
+  border-radius: 50px;
+  background: #c7edb1;
+  color: #1b4930;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 1px;
+}
+
+.ev2-solution-content {
+  padding: 30px;
+}
+
+.ev2-solution-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: #e9f5e8;
+  color: #328c55;
+}
+
+.ev2-solution-content h3 {
+  margin: 18px 0 10px;
+  color: #193d2b;
+  font-size: 1.4rem;
+}
+
+.ev2-solution-content > p {
+  color: #68786e;
+  font-size: 0.93rem;
+  line-height: 1.8;
+}
+
+.ev2-solution-content ul {
+  display: grid;
+  gap: 11px;
+  padding: 0;
+  margin: 20px 0;
+  list-style: none;
+}
+
+.ev2-solution-content li {
+  position: relative;
+  padding-left: 23px;
+  color: #42584a;
+  font-size: 0.88rem;
+}
+
+.ev2-solution-content li::before {
+  position: absolute;
+  left: 0;
+  color: #328c55;
+  content: "✓";
+  font-weight: 900;
+}
+
+.ev2-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #26804c;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ev2-inline-link:hover {
+  gap: 14px;
+}
+
+.ev2-selector-section {
+  background: #fff;
+}
+
+.ev2-selector-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  gap: 28px;
+  margin-top: 45px;
+}
+
+.ev2-selector-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 35px;
+  border: 1px solid #e3ebe5;
+  border-radius: 20px;
+  background: #f8faf8;
+}
+
+.ev2-step-label {
+  color: #398c58;
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 1.5px;
+}
+
+.ev2-control-block h3 {
+  margin: 9px 0 18px;
+  color: #1a3d2b;
+  font-size: 1.13rem;
+}
+
+.ev2-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ev2-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  min-height: 130px;
+  padding: 19px;
+  border: 1px solid #dfe8e1;
+  border-radius: 13px;
+  background: #fff;
+  color: #264533;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.ev2-choice > svg {
+  color: #358b55;
+}
+
+.ev2-choice strong {
+  font-size: 0.88rem;
+}
+
+.ev2-choice span {
+  color: #77847a;
+  font-size: 0.77rem;
+}
+
+.ev2-choice.active,
+.ev2-priority.active {
+  border-color: #39955c;
+  background: #edf7ed;
+  box-shadow: 0 0 0 2px rgba(57, 149, 92, 0.1);
+}
+
+.ev2-priority-list {
+  display: grid;
+  gap: 11px;
+}
+
+.ev2-priority {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 17px;
+  border: 1px solid #dfe8e1;
+  border-radius: 13px;
+  background: #fff;
+  color: #2c4936;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ev2-priority > svg {
+  flex-shrink: 0;
+  color: #378c57;
+}
+
+.ev2-priority > span:nth-child(2) {
+  display: grid;
+  gap: 5px;
+  flex: 1;
+}
+
+.ev2-priority strong {
+  font-size: 0.88rem;
+}
+
+.ev2-priority small {
+  color: #77847a;
+  font-size: 0.76rem;
+}
+
+.ev2-radio-dot {
+  width: 17px;
+  height: 17px;
+  border: 2px solid #b9c9bd;
+  border-radius: 50%;
+}
+
+.ev2-priority.active .ev2-radio-dot {
+  border: 5px solid #328c55;
+}
+
+.ev2-selector-photo {
+  height: 190px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.ev2-result-card {
+  padding: 35px;
+  border-radius: 20px;
+  background: #123b29;
+  color: #fff;
+  box-shadow: 0 18px 45px rgba(18, 59, 41, 0.15);
+}
+
+.ev2-result-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ev2-result-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #b9e99e;
+  font-size: 0.69rem;
+  font-weight: 850;
+  letter-spacing: 1px;
+}
+
+.ev2-result-type {
+  padding: 6px 10px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.12);
+  color: #d6ead8;
+  font-size: 0.69rem;
+}
+
+.ev2-result-card h3 {
+  margin: 30px 0 13px;
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+.ev2-result-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #b9e99e;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.ev2-result-rating svg {
+  width: 26px;
+  height: 26px;
+}
+
+.ev2-result-description {
+  margin: 20px 0 28px;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.ev2-result-specs {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.ev2-result-specs div {
+  display: grid;
+  gap: 7px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.ev2-result-specs span {
+  color: #a9c5b2;
+  font-size: 0.75rem;
+}
+
+.ev2-result-specs strong {
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.ev2-disclaimer {
+  display: flex;
+  gap: 10px;
+  margin: 22px 0;
+  color: #d1e5d4;
+}
+
+.ev2-disclaimer svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ev2-disclaimer p {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+
+.ev2-whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 9px;
+  background: #c8edaf;
+  color: #173d27;
+  font-size: 0.85rem;
+  font-weight: 850;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.ev2-whatsapp-button:hover {
+  background: #d9f6c5;
+  transform: translateY(-2px);
+}
+
+.ev2-comparison-section {
+  background: #f4f8f5;
+}
+
+.ev2-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.ev2-comparison-card {
+  overflow: hidden;
+  border: 1px solid #e2eae3;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.ev2-comparison-image {
+  position: relative;
+  height: 245px;
+  overflow: hidden;
+}
+
+.ev2-comparison-content {
+  padding: 28px;
+}
+
+.ev2-comparison-content h3 {
+  margin: 0 0 12px;
+  color: #183e2a;
+  font-size: 1.5rem;
+}
+
+.ev2-comparison-content > p {
+  color: #6c7b70;
+  font-size: 0.91rem;
+  line-height: 1.8;
+}
+
+.ev2-comparison-points {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.ev2-comparison-points div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #43594a;
+  font-size: 0.85rem;
+}
+
+.ev2-comparison-points svg {
+  width: 17px;
+  height: 17px;
+  color: #328c55;
+  flex-shrink: 0;
+}
+
+.ev2-power-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #819087;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.ev2-power-value {
+  color: #27814c;
+  font-size: 1.15rem;
+}
+
+.ev2-comparison-note {
+  max-width: 850px;
+  margin: 28px auto 0;
+  color: #748078;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.ev2-feasibility-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: start;
+  gap: 65px;
+}
+
+.ev2-feasibility-lead {
+  font-weight: 600;
+}
+
+.ev2-feasibility-steps {
+  display: grid;
+  gap: 23px;
+  margin: 32px 0;
+}
+
+.ev2-feasibility-step {
+  display: flex;
+  gap: 17px;
+}
+
+.ev2-feasibility-step > span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  border-radius: 12px;
+  background: #eaf5e9;
+  color: #328c55;
+  font-weight: 850;
+}
+
+.ev2-feasibility-step h3 {
+  margin: 0 0 7px;
+  color: #214a32;
+  font-size: 1rem;
+}
+
+.ev2-feasibility-step p {
+  margin: 0;
+  color: #708076;
+  font-size: 0.87rem;
+  line-height: 1.7;
+}
+
+.ev2-feasibility-visual {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.ev2-feasibility-visual > img {
+  height: 390px;
+  border-radius: 19px;
+}
+
+.ev2-feasibility-contact {
+  position: relative;
+  width: 88%;
+  margin: -95px auto 0;
+  padding: 27px;
+  border: 1px solid #e4ebe5;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 15px 40px rgba(25, 56, 37, 0.1);
+}
+
+.ev2-feasibility-contact h3 {
+  margin: 12px 0;
+  color: #183d29;
+  font-size: 1.35rem;
+}
+
+.ev2-feasibility-contact > p {
+  color: #708076;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.ev2-feasibility-contact > div {
+  display: grid;
+  gap: 5px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf1ed;
+}
+
+.ev2-feasibility-contact > div strong {
+  color: #31523d;
+  font-size: 0.75rem;
+}
+
+.ev2-feasibility-contact > div span,
+.ev2-feasibility-contact > div a {
+  color: #6b7b70;
+  font-size: 0.84rem;
+  text-decoration: none;
+}
+
+.ev2-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 19px;
+  color: #27814c;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.ev2-contact-link svg:last-child {
+  margin-left: auto;
+}
+
+.ev2-catalogue-section {
+  background: #f4f8f5;
+}
+
+.ev2-empty-catalogue {
+  padding: 50px 25px;
+  border: 1px solid #e0e9e2;
+  border-radius: 17px;
+  background: #fff;
+  text-align: center;
+}
+
+.ev2-empty-catalogue > svg {
+  color: #328c55;
+}
+
+.ev2-empty-catalogue h3 {
+  color: #1b432d;
+}
+
+.ev2-empty-catalogue p {
+  max-width: 600px;
+  margin: 0 auto 22px;
+  color: #718077;
+  line-height: 1.8;
+}
+
+.ev2-final-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 440px;
+  overflow: hidden;
+  background: #103523;
+}
+
+.ev2-final-image,
+.ev2-final-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.ev2-final-image img {
+  object-position: center 55%;
+}
+
+.ev2-final-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(9, 35, 23, 0.94),
+    rgba(9, 35, 23, 0.76),
+    rgba(9, 35, 23, 0.35)
+  );
+}
+
+.ev2-final-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  color: #fff;
+}
+
+.ev2-final-content .ev2-eyebrow {
+  color: #b9e99e;
+}
+
+.ev2-final-content h2 {
+  max-width: 720px;
+  margin: 18px 0;
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  line-height: 1.15;
+}
+
+.ev2-final-content > p {
+  max-width: 620px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+}
+
+.ev2-final-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+/* EV PAGE RESPONSIVE */
+
+@media (max-width: 900px) {
+  .ev2-intro-grid,
+  .ev2-selector-layout,
+  .ev2-feasibility-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .ev2-intro-image {
+    height: 380px;
+  }
+
+  .ev2-feasibility-visual {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .ev2-hero {
+    min-height: 590px;
+  }
+
+  .ev2-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(7, 24, 16, 0.91),
+      rgba(7, 24, 16, 0.68)
+    );
+  }
+
+  .ev2-hero-content {
+    padding-top: 75px;
+    padding-bottom: 65px;
+  }
+
+  .ev2-hero h1 {
+    font-size: clamp(2.45rem, 11vw, 3.5rem);
+    letter-spacing: -1.3px;
+  }
+
+  .ev2-hero-content > p {
+    font-size: 0.94rem;
+  }
+
+  .ev2-hero-points {
+    display: grid;
+    gap: 13px;
+    margin-top: 30px;
+  }
+
+  .ev2-section-heading {
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .ev2-section-heading h2,
+  .ev2-intro-content h2,
+  .ev2-feasibility-content h2 {
+    font-size: 2rem;
+  }
+
+  .ev2-section-heading > p {
+    margin-top: 12px;
+  }
+
+  .ev2-solution-grid,
+  .ev2-comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ev2-solution-image {
+    height: 235px;
+  }
+
+  .ev2-solution-content,
+  .ev2-comparison-content {
+    padding: 23px;
+  }
+
+  .ev2-selector-controls,
+  .ev2-result-card {
+    padding: 23px;
+  }
+
+  .ev2-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ev2-choice {
+    min-height: 105px;
+  }
+
+  .ev2-result-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .ev2-result-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ev2-comparison-image {
+    height: 220px;
+  }
+
+  .ev2-feasibility-visual > img {
+    height: 260px;
+  }
+
+  .ev2-feasibility-contact {
+    width: 94%;
+    padding: 21px;
+    margin-top: -55px;
+  }
+
+  .ev2-final-cta {
+    min-height: 440px;
+  }
+
+  .ev2-final-content h2 {
+    font-size: 2.25rem;
+  }
+
+  .ev2-hero-actions,
+  .ev2-final-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  .ev2-intro-image {
+    height: 290px;
+  }
+}
+
+
+/* =========================================
+   EV CHARGING - PRODUCT CARD ALIGNMENT
+   ========================================= */
+
+.ev2-catalogue-section .grid {
+  align-items: stretch;
+}
+
+.ev2-catalogue-section .product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #e2ebe5;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ev2-catalogue-section .product-image {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: #f1f6f2;
+}
+
+.ev2-catalogue-section .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ev2-catalogue-section .card-label {
+  align-self: flex-start;
+  margin: 18px 20px 8px;
+  color: #287347;
+  background: #e9f5ed;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ev2-catalogue-section .product-card h3 {
+  margin: 4px 20px 10px;
+  min-height: 48px;
+  color: #183c2b;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.ev2-catalogue-section .product-brand {
+  margin: 0 20px 10px;
+  color: #64756b;
+  font-size: 13px;
+}
+
+.ev2-catalogue-section .product-description {
+  margin: 0 20px 20px;
+  color: #53665b;
+  font-size: 14px;
+  line-height: 1.7;
+  flex-grow: 1;
+}
+
+.ev2-catalogue-section .product-card .text-link {
+  margin: 0 20px 22px;
+  align-self: flex-start;
+  color: #247348;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ev2-catalogue-section .product-card .text-link:hover {
+  color: #153e2b;
+}
+
+/* =========================================
+   EV CHARGING - BOTTOM CTA COLORS
+   ========================================= */
+
+.ev2-final-cta {
+  background: linear-gradient(135deg, #123d2b 0%, #1c6040 100%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.ev2-final-cta h2 {
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.ev2-final-cta p {
+  color: #e0eee5;
+  line-height: 1.8;
+}
+
+.ev2-final-cta .eyebrow,
+.ev2-final-cta .section-label {
+  color: #b9e6c6;
+}
+
+.ev2-final-cta a {
+  font-weight: 700;
+}
+
+.ev2-final-cta a:not(.btn):not(.button) {
+  color: #d2f2dc;
+}
+
+.ev2-final-cta a:not(.btn):not(.button):hover {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .ev2-catalogue-section .product-image {
+    height: 210px;
+  }
+
+  .ev2-catalogue-section .product-card h3 {
+    min-height: auto;
+    font-size: 18px;
+  }
+
+  .ev2-final-cta h2 {
+    font-size: 28px;
+  }
+}
+
+
+/* =========================================
+   EV CHARGING HERO - FINAL LAYER FIX
+========================================= */
+
+.ev2-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 560px;
+  overflow: hidden;
+  background: #10271d;
+  color: #ffffff;
+}
+
+.ev2-hero .ev2-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ev2-hero .ev2-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ev2-hero .ev2-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 24, 16, 0.95) 0%,
+    rgba(7, 24, 16, 0.82) 52%,
+    rgba(7, 24, 16, 0.42) 100%
+  );
+}
+
+.ev2-hero .ev2-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  color: #ffffff;
+}
+
+.ev2-hero .ev2-eyebrow {
+  color: #b9e99e;
+}
+
+.ev2-hero h1 {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 22px 0;
+  color: #ffffff;
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.4);
+}
+
+.ev2-hero h1 span {
+  display: block;
+  color: #b5e89a;
+}
+
+.ev2-hero-content > p {
+  max-width: 590px;
+  color: #f0f7f2;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.ev2-hero .ev2-hero-actions {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.ev2-hero .ev2-text-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.ev2-hero .ev2-hero-points {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.ev2-hero .ev2-hero-points span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
+.ev2-hero .ev2-hero-points svg {
+  color: #b5e89a;
+  flex-shrink: 0;
+}
+
+@media (max-width: 650px) {
+  .ev2-hero {
+    min-height: 590px;
+  }
+
+  .ev2-hero .ev2-hero-overlay {
+    background: rgba(7, 24, 16, 0.82);
+  }
+
+  .ev2-hero .ev2-hero-image img {
+    object-position: 60% center;
+  }
+
+  .ev2-hero .ev2-hero-content {
+    padding-top: 75px;
+    padding-bottom: 65px;
+  }
+
+  .ev2-hero h1 {
+    font-size: clamp(2.45rem, 11vw, 3.5rem);
+    letter-spacing: -1.3px;
+  }
+
+  .ev2-hero-content > p {
+    font-size: 0.94rem;
+  }
+
+  .ev2-hero .ev2-hero-points {
+    display: grid;
+    gap: 13px;
+    margin-top: 30px;
+  }
+
+  .ev2-hero .ev2-hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 17px;
+  }
+}
+
+
+/* =========================================
+   CONTACT PAGE
+   ========================================= */
+
+.contact-page {
+  min-height: 80vh;
+  padding: 150px 0 90px;
+  background: #f4f8f5;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.contact-info h1 {
+  margin: 14px 0 16px;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: #123d2b;
+}
+
+.contact-info > p {
+  max-width: 520px;
+  color: #53665b;
+  line-height: 1.8;
+}
+
+.contact-list {
+  display: grid;
+  gap: 16px;
+  margin: 32px 0;
+  list-style: none;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #285b40;
+  line-height: 1.6;
+}
+
+.contact-list svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #247348;
+}
+
+.contact-list a {
+  color: #183c2b;
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-list a:hover {
+  color: #247348;
+}
+
+.contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  background: #25834e;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.contact-whatsapp:hover {
+  background: #1c6a3f;
+}
+
+.contact-form {
+  display: grid;
+  gap: 18px;
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #e2ebe5;
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-form h2 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: #123d2b;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 7px;
+  color: #285b40;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cfe0d4;
+  border-radius: 10px;
+  background: #f9fbf9;
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 400;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #25834e;
+  outline-offset: 1px;
+  background: #ffffff;
+}
+
+.contact-submit {
+  justify-self: start;
+}
+
+@media (max-width: 860px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact-page {
+    padding-top: 120px;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+}
+
+/* =========================================
+   SOLAR SOLUTIONS - CATEGORY DETAILS
+   ========================================= */
+
+.solar-page .solar-detail-section {
+  scroll-margin-top: 90px;
+  background: #f4f8f5;
+}
+
+.solar-page .solar-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.solar-page .solar-detail-image {
+  height: 420px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.solar-page .solar-detail-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.solar-page .solar-detail-content h2 {
+  margin: 8px 0 14px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  color: #123d2b;
+}
+
+.solar-page .solar-detail-content > p {
+  color: #53665b;
+  line-height: 1.8;
+}
+
+.solar-page .solar-detail-points {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 28px;
+  list-style: none;
+}
+
+.solar-page .solar-detail-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #285b40;
+  font-weight: 600;
+}
+
+.solar-page .solar-detail-points svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #247348;
+}
+
+.solar-page .solar-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.solar-page .solar-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 2px;
+  border: 0;
+  background: none;
+  color: #247348;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.solar-page .solar-detail-link:hover {
+  color: #153e2b;
+}
+
+.solar-page .solar-detail-products {
+  margin-top: 48px;
+}
+
+.solar-page .solar-detail-back {
+  display: inline-block;
+  margin-top: 36px;
+  color: #247348;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.solar-page .solar-detail-back:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .solar-page .solar-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .solar-page .solar-detail-image {
+    height: 300px;
+  }
+
+  .solar-page .solar-detail-products.grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Product cards inside the Solar "Equipment" details */
+.solar-page .solar-detail-products {
+  align-items: stretch;
+}
+
+.solar-page .solar-detail-products .product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #e2ebe5;
+  border-radius: 16px;
+}
+
+.solar-page .solar-detail-products .product-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f1f6f2;
+}
+
+.solar-page .solar-detail-products .product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.solar-page .solar-detail-products .card-label {
+  align-self: flex-start;
+  margin: 18px 20px 8px;
+  padding: 6px 12px;
+  border-radius: 30px;
+  background: #e9f5ed;
+  color: #287347;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.solar-page .solar-detail-products .product-card h3 {
+  margin: 4px 20px 10px;
+  color: #183c2b;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.solar-page .solar-detail-products .product-brand {
+  margin: 0 20px 10px;
+  color: #64756b;
+  font-size: 13px;
+}
+
+.solar-page .solar-detail-products .product-description {
+  flex-grow: 1;
+  margin: 0 20px 20px;
+  color: #53665b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.solar-page .solar-detail-products .product-card .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  margin: 0 20px 22px;
+  color: #247348;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ---------- Category buttons ---------- */
+.solar-page button.solar-category-card {
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.solar-page button.solar-detail-back {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ---------- Category content blocks ---------- */
+.solar-page .solar-block-heading {
+  max-width: 680px;
+  margin: 72px 0 28px;
+}
+
+.solar-page .solar-block-heading h3 {
+  margin: 8px 0 10px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  color: #123d2b;
+}
+
+.solar-page .solar-block-heading p {
+  color: #53665b;
+  line-height: 1.75;
+}
+
+.solar-page .solar-info-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.solar-page .solar-info-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.solar-page .solar-info-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.solar-page .solar-info-card {
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e2ebe5;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.solar-page .solar-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: #e9f5ed;
+  color: #247348;
+}
+
+.solar-page .solar-info-card h4,
+.solar-page .solar-steps h4,
+.solar-page .solar-ready h4 {
+  margin-bottom: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: #183c2b;
+}
+
+.solar-page .solar-info-card p,
+.solar-page .solar-steps p {
+  color: #53665b;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.solar-page .solar-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  list-style: none;
+}
+
+.solar-page .solar-steps li {
+  padding-top: 18px;
+  border-top: 3px solid #25834e;
+}
+
+.solar-page .solar-step-number {
+  display: block;
+  margin-bottom: 8px;
+  color: #25834e;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.solar-page .solar-ready {
+  margin-top: 56px;
+  padding: 28px 30px;
+  background: #e9f5ed;
+  border-radius: 16px;
+}
+
+.solar-page .solar-ready ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  list-style: none;
+}
+
+.solar-page .solar-ready li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #285b40;
+  font-weight: 600;
+}
+
+.solar-page .solar-ready svg {
+  flex-shrink: 0;
+  color: #247348;
+}
+
+@media (max-width: 980px) {
+  .solar-page .solar-info-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .solar-page .solar-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .solar-page .solar-info-grid-3,
+  .solar-page .solar-info-grid-4,
+  .solar-page .solar-steps { grid-template-columns: 1fr; }
+  .solar-page .solar-block-heading { margin-top: 52px; }
+}
+
+
+/* Hero bottom strip: "Scroll to Explore" removed, keep the two items balanced */
+.rpg-home .rpg-hero-bottom {
+  justify-content: space-between;
+}
+
+
+/* =========================================================
+   CONTACT / GET A QUOTE PAGE
+   Same look as the Solar and EV pages
+========================================================= */
+
+/* Solid navbar (the page starts with a dark hero band) */
+body:has(.contact-page) .rpg-navbar,
+body:has(.contact-page) .rpg-navbar-top {
+  background: rgba(13, 43, 29, 0.97) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body:has(.contact-page) .rpg-navbar .rpg-navbar-inner {
+  min-height: 82px;
+}
+
+body:has(.contact-page) .rpg-navbar .rpg-nav-link {
+  color: #ffffff !important;
+}
+
+body:has(.contact-page) .rpg-navbar .rpg-nav-link:hover,
+body:has(.contact-page) .rpg-navbar .rpg-nav-active {
+  color: #c5e8a5 !important;
+}
+
+body:has(.contact-page) .rpg-navbar .rpg-menu-toggle {
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  body:has(.contact-page) .rpg-navbar .rpg-nav-links {
+    background: #102d20;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0 0 12px 12px;
+  }
+}
+
+.contact-page {
+  background: #f4f7f3;
+  color: #17251f;
+}
+
+/* Hero band */
+.contact-page .contact-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 170px 0 110px;
+  background:
+    linear-gradient(135deg, rgba(10, 36, 24, 0.96), rgba(16, 45, 32, 0.9)),
+    url("/images/solar/commercial-solar.jpg") center / cover no-repeat;
+  background-color: #102d20;
+}
+
+.contact-page .contact-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-page .contact-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5e8a5;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.contact-page .contact-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: #c5e8a5;
+}
+
+.contact-page .contact-hero h1 {
+  margin: 18px 0 18px;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.4vw, 4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.contact-page .contact-hero h1 span {
+  display: block;
+  color: #c5e8a5;
+}
+
+.contact-page .contact-hero p {
+  max-width: 560px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Body */
+.contact-page .contact-body {
+  padding: 0 0 100px;
+}
+
+.contact-page .contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: -50px;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-page .contact-info,
+.contact-page .contact-form {
+  padding: 40px;
+  border: 1px solid #e0e8de;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(16, 45, 32, 0.1);
+}
+
+.contact-page .contact-info h2,
+.contact-page .contact-form h2 {
+  margin: 0 0 10px;
+  color: #123c2a;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.contact-page .contact-info-text {
+  margin: 0 0 28px;
+  color: #5d6a61;
+  line-height: 1.7;
+}
+
+.contact-page .contact-list {
+  display: grid;
+  gap: 20px;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-page .contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-page .contact-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #e7f4dc;
+  color: #1d7a45;
+}
+
+.contact-page .contact-list small {
+  display: block;
+  margin-bottom: 2px;
+  color: #7a877e;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.contact-page .contact-list a,
+.contact-page .contact-list span:not(.contact-icon) {
+  color: #17251f;
+  font-weight: 600;
+  line-height: 1.55;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact-page .contact-list a:hover {
+  color: #16834a;
+}
+
+.contact-page .contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: #1d7a45;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.contact-page .contact-whatsapp:hover {
+  background: #145c33;
+  transform: translateY(-2px);
+}
+
+/* Form */
+.contact-page .contact-form {
+  display: grid;
+  gap: 18px;
+}
+
+.contact-page .contact-form h2 {
+  margin-bottom: 4px;
+}
+
+.contact-page .contact-form label {
+  display: grid;
+  gap: 8px;
+  color: #123c2a;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.contact-page .contact-form input,
+.contact-page .contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d5dfd2;
+  border-radius: 12px;
+  background: #f8faf7;
+  color: #17251f;
+  font: inherit;
+  font-weight: 500;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-page .contact-form textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.contact-page .contact-form input::placeholder,
+.contact-page .contact-form textarea::placeholder {
+  color: #8a968d;
+}
+
+.contact-page .contact-form input:focus,
+.contact-page .contact-form textarea:focus {
+  outline: none;
+  border-color: #16834a;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(22, 131, 74, 0.14);
+}
+
+.contact-page .contact-submit {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .contact-page .contact-hero {
+    padding: 130px 0 90px;
+  }
+
+  .contact-page .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact-page .contact-info,
+  .contact-page .contact-form {
+    padding: 28px 22px;
+  }
+
+  .contact-page .contact-submit {
+    justify-self: stretch;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================================
+   CHATBOT
+========================================================= */
+
+.rpg-chatbot {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  font-family: var(--font-body);
+}
+
+.rpg-chat-toggle {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22c55e 0%, #16834a 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(22, 131, 74, 0.45);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rpg-chat-toggle:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 14px 34px rgba(22, 131, 74, 0.55);
+}
+
+.rpg-chat-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(370px, calc(100vw - 32px));
+  height: min(560px, calc(100vh - 130px));
+  overflow: hidden;
+  border: 1px solid #dfe8dc;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(7, 27, 20, 0.28);
+  animation: rpgChatIn 0.25s ease;
+}
+
+@keyframes rpgChatIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.rpg-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: #102d20;
+  color: #ffffff;
+}
+
+.rpg-chat-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rpg-chat-title strong {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.rpg-chat-title small {
+  color: #c5e8a5;
+  font-size: 0.75rem;
+}
+
+.rpg-chat-avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #c5e8a5;
+  color: #153c29;
+}
+
+.rpg-chat-close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.rpg-chat-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.rpg-chat-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f4f7f3;
+}
+
+.rpg-chat-row {
+  display: flex;
+}
+
+.rpg-chat-user {
+  justify-content: flex-end;
+}
+
+.rpg-chat-bubble {
+  max-width: 86%;
+  padding: 11px 14px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.rpg-chat-bot .rpg-chat-bubble {
+  border-bottom-left-radius: 4px;
+  background: #ffffff;
+  color: #17251f;
+  box-shadow: 0 2px 8px rgba(18, 60, 42, 0.08);
+}
+
+.rpg-chat-user .rpg-chat-bubble {
+  border-bottom-right-radius: 4px;
+  background: #16834a;
+  color: #ffffff;
+}
+
+.rpg-chat-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #e7f4dc;
+  color: #145c33;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rpg-chat-link:hover {
+  background: #c5e8a5;
+}
+
+.rpg-chat-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.rpg-chat-quick button {
+  padding: 8px 14px;
+  border: 1px solid #b9d9a3;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #145c33;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.rpg-chat-quick button:hover {
+  background: #16834a;
+  color: #ffffff;
+}
+
+.rpg-chat-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 14px 10px;
+  padding: 11px;
+  border-radius: 12px;
+  background: #1d7a45;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rpg-chat-whatsapp:hover {
+  background: #145c33;
+}
+
+.rpg-chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px 14px;
+  border-top: 1px solid #e3eae0;
+}
+
+.rpg-chat-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid #d5dfd2;
+  border-radius: 999px;
+  background: #f8faf7;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.rpg-chat-form input:focus {
+  outline: none;
+  border-color: #16834a;
+  box-shadow: 0 0 0 3px rgba(22, 131, 74, 0.14);
+}
+
+.rpg-chat-form button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #16834a;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.rpg-chat-form button:hover {
+  background: #145c33;
+}
+
+@media (max-width: 480px) {
+  .rpg-chatbot {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+
+/* =========================================================
+   CONSISTENCY + FIXES (all pages match the landing page)
+========================================================= */
+
+/* 1. Contact: old rule added 150px top padding above the new hero band */
+.contact-page {
+  min-height: 0;
+  padding: 0;
+}
+
+/* 2. EV hero: width:100% removed the container's side margins, so the
+      heading was clipped at the left edge of the screen */
+.ev2-hero .ev2-hero-content {
+  width: min(var(--container), 100% - 40px);
+  margin-inline: auto;
+}
+
+/* 3. Buttons on dark sections had no styles (green text on green) */
+.btn-gold {
+  background: #c5e8a5;
+  border-color: #c5e8a5;
+  color: #153c29 !important;
+  font-weight: 700;
+}
+
+.btn-gold:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-light {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.btn-light:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #ffffff;
+}
+
+.ev2-final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.section-dark .btn-group,
+.cta-inner .btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* 4. "Enquire Now" arrow was dropping to the next line */
+.product-card .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* 5. Landing-page heading style (bold sans + green italic serif accent) */
+.ev2-hero h1 span,
+.rpg-about-hero-content h1 strong,
+.contact-page .contact-hero h1 span {
+  color: #c5e8a5;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.ev2-hero h1,
+.rpg-about-hero-content h1,
+.contact-page .contact-hero h1,
+.page-hero h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  line-height: 1.04;
+}
+
+/* 6. Solar calculator: keep both panels the same height without a big empty gap */
+.solar-page .calculator-wrapper {
+  align-items: stretch;
+}
+
+.solar-page .calculator-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+/* 7. Chatbot must sit above the footer and never block mobile content */
+@media (max-width: 480px) {
+  .rpg-chat-toggle {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+
+/* Hero bottom strip: exact centring and a line that stays visible on bright areas */
+.rpg-home .rpg-hero-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.rpg-home .rpg-hero-bottom .rpg-bottom-center {
+  grid-column: 2;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .rpg-home .rpg-hero-bottom {
+    display: flex;
+  }
+}
