@@ -9824,3 +9824,72 @@ body:has(.contact-page) .rpg-navbar .rpg-menu-toggle {
     display: flex;
   }
 }
+
+
+/* =========================================================
+   ALIGNMENT FIX
+   One shared content width (1200px) for the navbar, hero text,
+   hero bottom strips and sections, so left/right edges line up
+   on every page. Heroes also start below the tall logo.
+========================================================= */
+
+:root {
+  --container: 1200px;
+  --site-gutter: max(5%, calc((100% - 1200px) / 2));
+}
+
+.container,
+.rpg-home .container {
+  width: min(1200px, 90%);
+  margin-inline: auto;
+}
+
+/* About hero: text and bottom strip use the same edges as the navbar */
+.rpg-about-page .rpg-about-hero-content {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding-top: 160px;
+  padding-bottom: 150px;
+}
+
+.rpg-about-page .rpg-about-hero-bottom {
+  padding-inline: max(5%, calc((100% - 1200px) / 2));
+}
+
+/* EV hero: heading no longer sits under the logo */
+.ev2-hero {
+  min-height: 640px;
+}
+
+.ev2-hero .ev2-hero-content {
+  width: min(1200px, 90%);
+  margin-inline: auto;
+  padding-top: 160px;
+  padding-bottom: 90px;
+}
+
+/* Solar hero */
+.solar-page .page-hero {
+  padding-top: 160px;
+}
+
+.solar-page .page-hero .container {
+  width: min(1200px, 90%);
+}
+
+@media (max-width: 900px) {
+  .rpg-about-page .rpg-about-hero-content,
+  .ev2-hero .ev2-hero-content {
+    width: 88%;
+    padding-top: 130px;
+    padding-bottom: 90px;
+  }
+
+  .solar-page .page-hero {
+    padding-top: 130px;
+  }
+
+  .rpg-about-page .rpg-about-hero-bottom {
+    padding-inline: 6%;
+  }
+}
